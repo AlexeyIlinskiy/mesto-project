@@ -1,0 +1,9 @@
+.gallery__position {
+  margin: 51px auto 0px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 879.98px) {
+  .gallery__position {
+    margin: 36px auto 0px;
+  }
+}

@@ -1,0 +1,11 @@
+@media screen and (min-width: 880px) {
+  .header__position {
+    margin: 45px auto 0px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 879.98px) {
+  .header__position {
+    margin: 28px auto 0px;
+  }
+}

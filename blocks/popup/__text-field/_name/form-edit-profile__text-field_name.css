@@ -1,0 +1,11 @@
+@media screen and (min-width: 880px) {
+  .popup__text-field_name {
+    margin-top: 54px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 879.98px) {
+  .popup__text-field_name {
+    margin-top: 75px;
+  }
+}

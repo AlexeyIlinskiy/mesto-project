@@ -1,0 +1,49 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
+
+@import url(../blocks/body/body.css);
+
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__position/header__position.css);
+@import url(../blocks/logo/logo.css);
+@import url(../blocks/logo/__place_header/logo__place_header.css);
+
+@import url(../blocks/main/main.css);
+@import url(../blocks/main/__position/main__position.css);
+
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__position/profile__position.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+
+@import url(../blocks/profile-info/profile-info.css);
+@import url(../blocks/profile-info/__name/profile-info__name.css);
+@import url(../blocks/profile-info/__about/profile-info__about.css);
+@import url(../blocks/profile-info/__edit-button/profile-info__edit-button.css);
+
+@import url(../blocks/gallery/gallery.css);
+@import url(../blocks/gallery/__position/gallery__position.css);
+@import url(../blocks/gallery/__list/gallery__list.css);
+
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__img/card__img.css);
+@import url(../blocks/card/__title-place/card__title-place.css);
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__like-checkbox/card__like-checkbox.css);
+@import url(../blocks/card/__like-checkbox/__like-checkbox_invisible/card__like-checkbox_invisible.css);
+@import url(../blocks/card/__like-checkbox/__like-checkbox-visible/card__like-checkbox_visible.css);
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container/_popup/popup__container_popup_opened.css);
+@import url(../blocks/popup/__container-content/popup__container-content.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__text-field/popup__text-field.css);
+@import url(../blocks/popup/__text-field/_name/form-edit-profile__text-field_name.css);
+@import url(../blocks/popup/__text-field/_about/popup__text-field_about.css);
+@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__position/footer__position.css);
+@import url(../blocks/footer/__author/footer__author.css);
