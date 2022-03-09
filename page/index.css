@@ -19,7 +19,7 @@
 @import url(../blocks/profile-info/__edit-button/profile-info__edit-button.css);
 
 @import url(../blocks/gallery/gallery.css);
-@import url(../blocks/gallery/__list/gallery__list.css);
+@import url(../blocks/gallery/__items/gallery__items.css);
 
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__img/card__img.css);
