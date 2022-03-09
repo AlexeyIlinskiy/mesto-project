@@ -1,0 +1,17 @@
+.item__btn {
+  width: 22px;
+  height: 19px;
+  border: 0;
+  background-color: transparent;
+  background-image: url(../../../images/Like-disabled.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.item__btn:hover {
+  opacity: 0.5;
+}
