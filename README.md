@@ -3,8 +3,8 @@
 
 ---
 ### Описание проекта
-* Адаптивная страница
-* [Ссылка на проект в GitHub](https://github.com/AlexeyIlinskiy/mesto-project.git)
+* Адаптивная страница c открытием popup-окна с 2-мя полями (Имя и описание) *пока работает в ручном режиме с добавлением модификатора*
+* [Ссылка на проект]https://alexeyilinskiy.github.io/mesto-project/index.html)
 
 
 ---
@@ -28,3 +28,7 @@
 ### Ссылка на макет в Фигме:
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=28212%3A326)
+
+---
+### Планируемые доработки в следующем спринте:
+* Использовать JS для (popup и лайков)
