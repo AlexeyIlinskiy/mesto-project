@@ -1,5 +1,5 @@
 .item__title {
-  width: 185px;
+  max-width: 185px;
   font-size: 24px;
   line-height: 29.05px;
   font-weight: 900;
