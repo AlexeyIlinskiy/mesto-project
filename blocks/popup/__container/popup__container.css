@@ -11,7 +11,7 @@
 @media screen and (min-width: 880px) {
   .popup__container {
     width: 430px;
-    min-height: 330px;
+    height: 330px;
     top: 195px;
     left: calc(50% - 430px/2);
   } 
@@ -20,7 +20,7 @@
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
   .popup__container {
     width: 282px;
-    min-height: 322px;
+    height: 322px;
     top: 123px;
     left: calc(50% - 282px/2);
   } 
