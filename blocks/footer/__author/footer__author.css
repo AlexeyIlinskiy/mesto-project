@@ -1,13 +1,8 @@
 .footer__author {
+  font-size: 18px;
+  line-height: 21.78px;
   font-weight: normal;
   color: rgba(84, 84, 84, 1);
-}
-
-@media screen and (min-width: 880px) {
-  .footer__author {
-    font-size: 18px;
-    line-height: 21.78px;
-  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {

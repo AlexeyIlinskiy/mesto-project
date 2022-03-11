@@ -1,12 +1,5 @@
 .item__btn_active {
-  border: 0;
-  background-color: transparent;
   background-image: url(../../../../images/Like-active.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-  opacity: 1;
 }
 
 .item__btn_active:hover {

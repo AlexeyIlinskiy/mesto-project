@@ -1,9 +1,7 @@
-@media screen and (min-width: 880px) {
   .popup__container-content {
     width: 358px;
     margin: 35px auto 37px;
-  } 
-}
+  }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
   .popup__container-content {

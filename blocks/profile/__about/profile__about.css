@@ -1,15 +1,10 @@
 .profile__about {
+  font-size: 18px;
+  line-height: 21.78px;
   font-weight: 400;
+  grid-column: 1/3;
+  margin: 16px 0px 0px;
   color: rgba(255, 255, 255, 1);
-}
-
-@media screen and (min-width: 880px) {
-  .profile__about {
-    font-size: 18px;
-    line-height: 21.78px;
-    grid-column: 1/3;
-    margin: 16px 0px 0px;
-  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {

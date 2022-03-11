@@ -1,6 +1,8 @@
 .item {
   max-width: 282px;
+  height: 361px;
   background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   display: grid;
   overflow: hidden;

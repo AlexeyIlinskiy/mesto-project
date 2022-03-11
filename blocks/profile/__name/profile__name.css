@@ -1,15 +1,10 @@
 .profile__name {
+  font-size: 42px;
+  line-height: 45px;
   font-weight: 500;
+  align-self: end;
   color: rgba(255, 255, 255, 1);
   margin: 0;
-}
-
-@media screen and (min-width: 880px) {
-  .profile__name {
-    font-size: 42px;
-    line-height: 45px;
-    align-self: end;
-  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {

@@ -13,91 +13,91 @@
   </header>
   <main class="main">
     <section class="profile">
-      <img src="./images/Avatar.png" alt="Фото профиля" class="profile__avatar">
+      <img src="./images/Avatar.jpg" alt="Фото профиля" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">
           Жак-Ив Кусто
         </h1>
-        <button class="profile__edit-button" title="Редактировать профиль"></button>
+        <button type="form" class="profile__edit-button" title="Редактировать профиль"></button>
         <p class="profile__about">
           Исследователь океана
         </p>
       </div>
-      <button class="profile__add-button"></button>
+      <button type="button" class="profile__add-button"></button>
     </section>
     <section class="gallery">
       <ul class="gallery__items">
-      <li class="item">
-        <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="item__img">
-        <div class="item__title-place">
-          <h2 class="item__title">
-            Карачаевск
-          </h2>
-          <button class="item__btn"></button>
-        </div>
-      </li>
-      <li class="item">
-        <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="item__img">
-        <div class="item__title-place">
-          <h2 class="item__title">
-            Гора Эльбрус
-          </h2>
-          <button class="item__btn"></button>
-        </div>
-      </li>
-      <li class="item">
-        <img src="./images/Dombai.jpg" alt="Домбай" class="item__img">
-        <div class="item__title-place">
-          <h2 class="item__title">
-            Домбай
-          </h2>
-          <button class="item__btn"></button>
-        </div>
-      </li>
-      <li class="item">
-        <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="item__img">
-        <div class="item__title-place">
-          <h2 class="item__title">
-            Гора Эльбрус
-          </h2>
-          <button class="item__btn"></button>
-        </div>
-      </li>
-      <li class="item">
-        <img src="./images/Dombai.jpg" alt="Домбай" class="item__img">
-        <div class="item__title-place">
-          <h2 class="item__title">
-            Домбай
-          </h2>
-          <button class="item__btn"></button>
-        </div>
-      </li>
-      <li class="item">
-        <img src="./images/Karachaevsk.jpg" alt="Карачаево-Черкессия" class="item__img">
-        <div class="item__title-place">
-          <h2 class="item__title">
-            Карачаево-Черкессия
-          </h2>
-          <button class="item__btn"></button>
-        </div>
-      </li>
-    </ul>
+        <li class="item">
+          <img src="./images/Karachaevsk.jpg" alt="Карачаевск" class="item__img">
+          <div class="item__title-place">
+            <h2 class="item__title">
+              Карачаевск
+            </h2>
+            <button type="submit" class="item__btn"></button>
+          </div>
+        </li>
+        <li class="item">
+          <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="item__img">
+          <div class="item__title-place">
+            <h2 class="item__title">
+              Гора Эльбрус
+            </h2>
+            <button type="submit" class="item__btn"></button>
+          </div>
+        </li>
+        <li class="item">
+          <img src="./images/Dombai.jpg" alt="Домбай" class="item__img">
+          <div class="item__title-place">
+            <h2 class="item__title">
+              Домбай
+            </h2>
+            <button type="submit" class="item__btn"></button>
+          </div>
+        </li>
+        <li class="item">
+          <img src="./images/Elbrus.jpg" alt="Гора Эльбрус" class="item__img">
+          <div class="item__title-place">
+            <h2 class="item__title">
+              Гора Эльбрус
+            </h2>
+            <button type="submit" class="item__btn"></button>
+          </div>
+        </li>
+        <li class="item">
+          <img src="./images/Dombai.jpg" alt="Домбай" class="item__img">
+          <div class="item__title-place">
+            <h2 class="item__title">
+              Домбай
+            </h2>
+            <button type="submit" class="item__btn"></button>
+          </div>
+        </li>
+        <li class="item">
+          <img src="./images/Karachaevsk.jpg" alt="Карачаево-Черкессия" class="item__img">
+          <div class="item__title-place">
+            <h2 class="item__title">
+              Карачаево-Черкессия
+            </h2>
+            <button type="submit" class="item__btn"></button>
+          </div>
+        </li>
+      </ul>
     </section>
-   <section class="popup popup_opened">
-    <form class="popup__container popup_opened">
-      <img src="./images/Close_Icon.svg" alt="Закрыть форму" class="popup__close-icon">
-      <div class="popup__container-content">
-        <h2 class="popup__title">
-          Редактировать профиль
-        </h2>
-       <label for="popup-name"></label>
-        <input type="text" class="popup__text-field popup__text-field_name" placeholder="Жак-Ив Кусто" id="popup-name">
-         <label for="popup-about"></label>
-        <input type="text" class="popup__text-field popup__text-field_about" placeholder="Исследователь океана" id="popup-about">
-        <button type="submit" class="popup__submit-btn" id="popup__submin-btn">Сохранить</button>
-      </div>
-    </form>
-    </section>
+    <div class="popup">
+      <form class="popup__container">
+        <button type="button" class="popup__close-icon"></button>
+        <div class="popup__container-content">
+          <h2 class="popup__title">
+            Редактировать профиль
+          </h2>
+         <label for="popup-name"></label>
+          <input type="text" class="popup__text-field popup__name" placeholder="Жак-Ив Кусто" id="popup-name">
+          <label for="popup-about"></label> 
+          <input type="text" class="popup__text-field popup__about" placeholder="Ваш род деятельности" id="popup-about">
+          <button type="submit" class="popup__submit-btn" id="popup__submin-btn">Сохранить</button>
+        </div>
+      </form>
+    </div>
   </main>
   <footer class="footer">
     <p class="footer__author">
