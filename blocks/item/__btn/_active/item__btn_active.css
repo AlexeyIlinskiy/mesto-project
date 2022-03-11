@@ -1,7 +1,3 @@
 .item__btn_active {
   background-image: url(../../../../images/Like-active.svg);
 }
-
-.item__btn_active:hover {
-  opacity: 0.5;
-}

@@ -18,7 +18,7 @@
         <h1 class="profile__name">
           Жак-Ив Кусто
         </h1>
-        <button type="form" class="profile__edit-button" title="Редактировать профиль"></button>
+        <button type="button" class="profile__edit-button" title="Редактировать профиль"></button>
         <p class="profile__about">
           Исследователь океана
         </p>
@@ -83,20 +83,18 @@
         </li>
       </ul>
     </section>
-    <div class="popup">
-      <form class="popup__container">
-        <button type="button" class="popup__close-icon"></button>
-        <div class="popup__container-content">
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <form method="get" name="form-edit-profile" id="form-edit-profile" class="popup__form-edit-profile">
+          <button type="button" class="popup__close-icon"></button>
           <h2 class="popup__title">
             Редактировать профиль
           </h2>
-         <label for="popup-name"></label>
-          <input type="text" class="popup__text-field popup__name" placeholder="Жак-Ив Кусто" id="popup-name">
-          <label for="popup-about"></label> 
-          <input type="text" class="popup__text-field popup__about" placeholder="Ваш род деятельности" id="popup-about">
-          <button type="submit" class="popup__submit-btn" id="popup__submin-btn">Сохранить</button>
-        </div>
-      </form>
+          <input type="text" name="name" id="popup__name" class="popup__text-field popup__name" placeholder="Жак-Ив Кусто">
+          <input type="text" name="about" id="popup__about" class="popup__text-field popup__about" placeholder="Ваш род деятельности">
+          <button type="submit" id="popup__submin-btn" value="save" class="popup__submit-btn">Сохранить</button>
+        </form>
+      </div>
     </div>
   </main>
   <footer class="footer">
