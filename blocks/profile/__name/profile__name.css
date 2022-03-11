@@ -1,11 +1,11 @@
-.profile-info__name {
+.profile__name {
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   margin: 0;
 }
 
 @media screen and (min-width: 880px) {
-  .profile-info__name {
+  .profile__name {
     font-size: 42px;
     line-height: 45px;
     align-self: end;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
-  .profile-info__name {
+  .profile__name {
     font-size: 27px;
     line-height: 32.68px;
     justify-self: end;

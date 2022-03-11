@@ -1,4 +1,4 @@
-.profile-info {
+.profile__info {
   margin: 0px 0px 0px 30px;
   align-self: start;
   display: grid;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
-  .profile-info {
+  .profile__info {
     max-width: 282px; 
     margin: 22.25px 0px 0px;
     display: grid;
