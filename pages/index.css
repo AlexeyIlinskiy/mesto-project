@@ -28,14 +28,13 @@
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__form-edit-profile/popup__form-edit-profile.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__text-field/popup__text-field.css);
-@import url(../blocks/popup/__name/popup__name.css);
-@import url(../blocks/popup/__about/popup__about.css);
-@import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
-@import url(../blocks/popup/__close-icon/popup__close-icon.css);
 
-@import url(../blocks/footer/footer.css);
+@import url(../blocks/form-edit-profile/form-edit-profile.css);
+@import url(../blocks/form-edit-profile/__close-icon/popup__close-icon.css);
+@import url(../blocks/form-edit-profile/__title/form-edit-profile__title.css);
+@import url(../blocks/form-edit-profile/__text-fields/form-edit-profile__text-fields.css);
+@import url(../blocks/form-edit-profile/__text-field/form-edit-profile__text-field.css);
+@import url(../blocks/form-edit-profile/__submit-btn/form-edit-profile__submit-btn.css);
+
 @import url(../blocks/footer/__author/footer__author.css);

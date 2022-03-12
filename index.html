@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/indes.css">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Проект Место</title>
 </head>
 <body class="body">
@@ -18,7 +18,7 @@
         <h1 class="profile__name">
           Жак-Ив Кусто
         </h1>
-        <button type="button" form="form-edit-profile" class="profile__edit-button"></button>
+        <button type="button" class="profile__edit-button"></button>
         <p class="profile__about">
           Исследователь океана
         </p>
@@ -33,7 +33,7 @@
             <h2 class="item__title">
               Карачаевск
             </h2>
-            <button type="submit" class="item__btn"></button>
+            <button type="button" class="item__btn"></button>
           </div>
         </li>
         <li class="item">
@@ -42,7 +42,7 @@
             <h2 class="item__title">
               Гора Эльбрус
             </h2>
-            <button type="submit" class="item__btn"></button>
+            <button type="button" class="item__btn"></button>
           </div>
         </li>
         <li class="item">
@@ -51,7 +51,7 @@
             <h2 class="item__title">
               Домбай
             </h2>
-            <button type="submit" class="item__btn"></button>
+            <button type="button" class="item__btn"></button>
           </div>
         </li>
         <li class="item">
@@ -60,7 +60,7 @@
             <h2 class="item__title">
               Гора Эльбрус
             </h2>
-            <button type="submit" class="item__btn"></button>
+            <button type="button" class="item__btn"></button>
           </div>
         </li>
         <li class="item">
@@ -69,7 +69,7 @@
             <h2 class="item__title">
               Домбай
             </h2>
-            <button type="submit" class="item__btn"></button>
+            <button type="button" class="item__btn"></button>
           </div>
         </li>
         <li class="item">
@@ -78,21 +78,31 @@
             <h2 class="item__title">
               Карачаево-Черкессия
             </h2>
-            <button type="submit" class="item__btn"></button>
+            <button type="button" class="item__btn"></button>
           </div>
         </li>
       </ul>
     </section>
     <div class="popup popup_opened">
       <div class="popup__container">
-        <form method="get" name="form-edit-profile" id="form-edit-profile" class="popup__form-edit-profile">
-          <button type="reset" class="popup__close-icon"></button>
-          <h2 class="popup__title">
+        <form method="get" name="form-edit-profile" id="form-edit-profile" class="form-edit-profile">
+          <button type="button" class="form-edit-profile__close-icon"></button>
+          <h2 class="form-edit-profile__title">
             Редактировать профиль
           </h2>
-          <input type="text" name="name" id="popup__name" class="popup__text-field popup__name" placeholder="Жак-Ив Кусто">
-          <input type="text" name="about" id="popup__about" class="popup__text-field popup__about" placeholder="Чем вы занимаетесь?">
-          <button type="submit" id="popup__submin-btn" value="save" class="popup__submit-btn">Сохранить</button>
+          <ul class="form-edit-profile__text-fields">
+            <li>
+              <label for="form-edit-profile-name">
+                <input type="text" name="name" id="form-edit-profile-name" class="form-edit-profile__text-field" placeholder="Как вас зовут?">
+              </label>
+            </li>
+            <li>
+              <label for="form-edit-profile-about">
+                <input type="text" name="about" id="form-edit-profile-about" class="form-edit-profile__text-field" placeholder="Чем вы занимаетесь?">
+              </label>
+            </li>
+          </ul>
+          <button type="submit" id="form-edit-profile__submin-btn" value="save" class="form-edit-profile__submit-btn">Сохранить</button>
         </form>
       </div>
     </div>
