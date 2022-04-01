@@ -83,7 +83,8 @@
         </li>
       </ul>
     </section>
-    <div class="popup popup_opened">
+<!--Форма редактирования профиля-->
+    <div class="popup">
       <div class="popup__container">
         <form method="get" name="form-edit-profile" id="form-edit-profile" class="form-edit-profile">
           <button type="button" class="form-edit-profile__close-icon"></button>
@@ -102,10 +103,34 @@
               </label>
             </li>
           </ul>
-          <button type="submit" id="form-edit-profile__submin-btn" value="save" class="form-edit-profile__submit-btn">Сохранить</button>
+          <button type="submit" id="form-edit-profile__submit-btn" value="save" class="form-edit-profile__submit-btn">Сохранить</button>
         </form>
       </div>
     </div>
+    <!--Форма добавления карточки-->
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <form method="get" name="form-new-item" id="form-new-item" class="form-new-item">
+          <button type="button" class="form-new-item__close-icon"></button>
+          <h2 class="form-new-item__title">
+            Новое место
+          </h2>
+          <ul class="form-new-item__text-fields">
+            <li>
+              <label for="form-new-item-name">
+                <input type="text" name="name" id="form-new-item-name" class="form-new-item__text-field" placeholder="Название">
+              </label>
+            </li>
+            <li>
+              <label for="form-new-item-image">
+                <input type="text" name="image" id="form-new-item-image" class="form-new-item__text-field" placeholder="Ссылка на картинку">
+              </label>
+            </li>
+          </ul>
+          <button type="submit" id="form-new-item__submit-btn" value="save" class="form-new-item__submit-btn">Создать</button>
+        </form>
+      </div>
+    </div>  
   </main>
   <footer class="footer">
     <p class="footer__author">

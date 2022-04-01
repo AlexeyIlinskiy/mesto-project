@@ -1,0 +1,11 @@
+.form-new-item {
+    width: 358px;
+    margin: 34px auto 37px;
+  }
+
+@media screen and (min-width: 320px) and (max-width: 879.98px) {
+  .form-new-item {
+    max-width: 238px;
+    margin: 25px auto;
+  } 
+}

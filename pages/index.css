@@ -31,10 +31,17 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 
 @import url(../blocks/form-edit-profile/form-edit-profile.css);
-@import url(../blocks/form-edit-profile/__close-icon/popup__close-icon.css);
+@import url(../blocks/form-edit-profile/__close-icon/form-edit-profile__close-icon.css);
 @import url(../blocks/form-edit-profile/__title/form-edit-profile__title.css);
 @import url(../blocks/form-edit-profile/__text-fields/form-edit-profile__text-fields.css);
 @import url(../blocks/form-edit-profile/__text-field/form-edit-profile__text-field.css);
 @import url(../blocks/form-edit-profile/__submit-btn/form-edit-profile__submit-btn.css);
+
+@import url(../blocks/form-new-item/form-new-item.css);
+@import url(../blocks/form-new-item/__close-icon/form-new-item__close-icon.css);
+@import url(../blocks/form-new-item/__title/form-new-item__title.css);
+@import url(../blocks/form-new-item/__text-fields/form-new-item__text-fields.css);
+@import url(../blocks/form-new-item/__text-field/form-new-item__text-field.css);
+@import url(../blocks/form-new-item/__submit-btn/form-edit-profile__submit-btn.css);
 
 @import url(../blocks/footer/__author/footer__author.css);
