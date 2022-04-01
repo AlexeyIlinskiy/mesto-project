@@ -12,6 +12,7 @@
   background-size: cover;
   border: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .form-edit-profile__close-icon:hover {

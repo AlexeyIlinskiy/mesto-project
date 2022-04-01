@@ -12,6 +12,7 @@
   background-size: cover;
   border: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .form-new-item__close-icon:hover {
