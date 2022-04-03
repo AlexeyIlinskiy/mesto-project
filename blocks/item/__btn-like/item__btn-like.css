@@ -13,6 +13,6 @@
   opacity: 1;
 }
 
-.item__btn:hover {
+.item__btn-like:hover {
   opacity: 0.5;
 }
