@@ -1,25 +1,42 @@
-//let editBtnProfile = document.querySelector('#profile__edit-button'); //Кнопка открытия окна редактирования профиля
-//let clsBtnProfile = document.querySelector('#form-edit-profile__close-icon'); //Кнопка закрытия окна редактирования профиля
-//let addBtnItem = document.querySelector('#profile__add-button'); //Кнопка открытия добавления карточки
-//let clsBtnItem = document.querySelector('#form-new-item__close-icon'); //Кнопка закрытия добавления карточки
+let editBtnProfile = document.querySelector('.profile__edit-button');
+let closeBtnProfile = document.querySelector('.form-edit-profile__close-icon')
+let formEditProfile = document.querySelector('#popup-edit-profile');
+
+let addBtnItem = document.querySelector('.profile__add-button')
+let closeBtnItem = document.querySelector('.form-new-item__close-icon')
+let formAddItem = document.querySelector('#popup-add-item');
 
 //Откроем окно редактирования профиля
-document.getElementById('profile__edit-button').onclick = function() {
-  document.getElementById('popup-edit-profile').classList.add('popup_opened');
+editBtnProfile.onclick = function() {
+  formEditProfile.classList.add('popup_opened');
 }
 
 //Закроем окно редактирования профиля кликом на крестик
-document.getElementById('form-edit-profile__close-icon').onclick = function() {
-  document.getElementById('popup-edit-profile').classList.remove('popup_opened');
+closeBtnProfile.onclick = function() {
+  formEditProfile.classList.remove('popup_opened');
 }
 
+//Редактирование профиля
+const formElement = document.querySelector('.form-edit-profile');
+const nameInput = document.querySelector('#form-edit-profile-name');
+const jobInput = document.querySelector('#form-edit-profile-about');
+
+function formSubmitHandler (evt) {
+  evt.preventDefault();
+  
+  nameInput.value;
+  jobInput.value;
+
+}
+
+formElement.addEventListener('submit', formSubmitHandler);
 
 //Откроем окно добавления карточки
-document.getElementById('profile__add-button').onclick = function() {
-  document.getElementById('popup-add-item').classList.add('popup_opened');
+addBtnItem.onclick = function() {
+  formAddItem.classList.add('popup_opened');
 }
 
 //Закроем окно добавления карточки кликом на крестик
-document.getElementById('form-new-item__close-icon').onclick = function() {
-  document.getElementById('popup-add-item').classList.remove('popup_opened');
+closeBtnItem.onclick = function() {
+  formAddItem.classList.remove('popup_opened');
 }
