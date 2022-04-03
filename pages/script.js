@@ -47,7 +47,7 @@ closeBtnItem.onclick = function() {
   formAddItem.classList.remove('popup_opened');
 }
 
-//Данные для карточек: Название и ссылка на картику
+//Массив для карточек: Название, Линк на картинку
 const initialCards = [
   {
     name: 'Архыз',
@@ -76,19 +76,81 @@ const initialCards = [
 ];
 
 //Работаем с шаблоном создания карточки
-const galleryItems = document.querySelector('.gallery__items');
-const itemImg = initialCards.map
+const ElementFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
+const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
+const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
+const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
+const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
 
-function addItem (/*itemImg, itemTitle*/) {
-  const itemTemplate = document.querySelector('#item-template').content;
+initialCards.forEach(function(element) {
   const itemElement = itemTemplate.querySelector('.item').cloneNode(true); 
+  
+  itemElement.querySelector('.item__img').src = element.link;
+  itemElement.querySelector('.item__title').textContent = element.name;
 
-  itemElement.querySelector('.item__img').src = '';
-  itemElement.querySelector('.item__title').textContent = '';
-//  itemElement.querySelector('.item__img').src = itemImg;
-//  itemElement.querySelector('.item__title').textContent = itemTitle;
+  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
+    evt.target.classList.add('item__btn-like_active');
+  }); 
 
   galleryItems.append(itemElement);
+});
+
+
+//Создадим функцию добавления карточки
+function addItem() {
+  const itemElement = itemTemplate.querySelector('.item').cloneNode(true); //Клонируем шаблон
+  
+  itemElement.querySelector('.item__img').src = itemLinkInput.value;
+  itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
+
+  galleryItems.prepend(itemElement);
+
+  formAddItem.classList.remove('popup_opened');
 }
 
-addItem();
+ElementFormAddItem.addEventListener('submit', addItem);
+
+//Лайк карточек
+const likeButton = document.querySelector('.item__btn-like'); //выбрали кнопку Лайк
+
+  likeButton.addEventListener('click', function (evt) {
+    
+    evt.target.classList.add('.item__btn-like_active');
+
+  });
+
+
+/*
+directors.forEach(function (element) {
+  const directorElement = directorTemplate.cloneNode(true);
+
+  directorElement.querySelector('.directors__name').textContent = element.name;
+  directorElement.querySelector('.directors__description').textContent = element.career;
+  directorElement.querySelector('.directors__films').href = element.films;
+
+  directorsList.append(directorElement)
+})*/ 
+/*
+const elementsContainer = document.querySelector('.elements');
+const saveElements = document.querySelector('.form__button_popup_save');
+
+function addElements(designationValue, pictureValue) {
+  const elementsTemplate = document.querySelector('#elements-template').content;
+  const newElement = elementsTemplate.querySelector('.elements__rectangle').cloneNode(true);
+  
+  newElement.querySelector('.elements__text').textContent = designationValue;
+  newElement.querySelector('.elements__mask-group').textContent = pictureValue;
+  newElement.querySelector('.elements__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('elements__like_active');
+  });
+
+  elementsContainer.append(newElement);
+}
+
+saveElements.addEventListener('submit', function () {
+  const designationInput = document.querySelector('.form__input_popup_designation');
+  const pictureInput = document.querySelector('.form__input_popup_link-picture');
+  addElements(designationInput.value, pictureInput.value);
+  designationInput.value = '';
+  pictureInput.value = '';
+});*/
