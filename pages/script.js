@@ -96,7 +96,9 @@ initialCards.forEach(function(element) {
 });
 
 
-//Создадим функцию добавления карточки
+//Создадим функцию добавления и удаления карточки
+//const delBtn = document.querySelector('.item__btn-delete');
+
 function addItem(evt) {
   evt.preventDefault();
 
@@ -105,9 +107,20 @@ function addItem(evt) {
   itemElement.querySelector('.item__img').src = itemLinkInput.value;
   itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
 
+  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
+    evt.target.classList.add('item__btn-like_active');
+  });
+  
+
+  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
+    e.target.closest('.gallery__items').remove(itemElement.querySelector('.item'));
+  });
+  
   galleryItems.prepend(itemElement);
+  
 
   formAddItem.classList.remove('popup_opened');
+
 }
 
 ElementFormAddItem.addEventListener('submit', addItem);
