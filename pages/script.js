@@ -76,12 +76,7 @@ const initialCards = [
 ];
 
 //Работаем с шаблоном создания карточки
-const ElementFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
-const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
-const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
-const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
-const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
-
+/*
 initialCards.forEach(function(element) {
   const itemElement = itemTemplate.querySelector('.item').cloneNode(true); 
   
@@ -97,7 +92,6 @@ initialCards.forEach(function(element) {
 
 
 //Создадим функцию добавления и удаления карточки
-//const delBtn = document.querySelector('.item__btn-delete');
 
 function addItem(evt) {
   evt.preventDefault();
@@ -111,16 +105,65 @@ function addItem(evt) {
     evt.target.classList.add('item__btn-like_active');
   });
   
-
   itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
     e.target.closest('.gallery__items').remove(itemElement.querySelector('.item'));
   });
   
   galleryItems.prepend(itemElement);
   
-
   formAddItem.classList.remove('popup_opened');
 
+}
+
+ElementFormAddItem.addEventListener('submit', addItem);
+*/
+
+//Создадим карточки
+const ElementFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
+const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
+const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
+const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
+const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
+
+//Функция вывода 6 карточек по умолчанию
+initialCards.forEach(function (element) {
+  const itemElement = itemTemplate.querySelector('.item').cloneNode(true);
+
+  itemElement.querySelector('.item__img').src = element.link;
+  itemElement.querySelector('.item__title').textContent = element.name;
+
+  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('item__btn-like_active');
+  });
+  
+  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
+    e.target.closest('.item').remove(itemElement);
+  });
+
+  galleryItems.append(itemElement);
+})
+
+//Функция добавления карточки пользователем
+
+function addItem(evt) {
+  evt.preventDefault();
+
+  const itemElement = itemTemplate.querySelector('.item').cloneNode(true);
+
+  itemElement.querySelector('.item__img').src = itemLinkInput.value;
+  itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
+
+  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('item__btn-like_active');
+  });
+
+  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
+    e.target.closest('.item').remove(itemElement);
+  });
+
+  galleryItems.prepend(itemElement);
+  
+  formAddItem.classList.remove('popup_opened');
 }
 
 ElementFormAddItem.addEventListener('submit', addItem);
