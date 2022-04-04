@@ -81,6 +81,9 @@ const galleryItems = document.querySelector('.gallery__items'); //Выберем
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
 const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
 const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
+const formViewImg = document.querySelector('.form-view-img');
+const imgBigSize = document.querySelector('.img-popup');
+const imgPopupCaption = document.querySelector('.img-popup__caption');
 
 //Функция вывода 6 карточек по умолчанию
 initialCards.forEach(function (element) {
@@ -95,6 +98,12 @@ initialCards.forEach(function (element) {
   
   itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
     e.target.closest('.item').remove(itemElement);
+  });
+  
+  itemElement.querySelector('.item__img').addEventListener('click', function () {
+    popupImg.classList.add('popup_opened', 'popup_opacity');
+    imgBigSize.src = element.link;
+    imgPopupCaption.textContent = element.name;
   });
 
   galleryItems.append(itemElement);
@@ -118,6 +127,12 @@ function addItem(evt) {
     e.target.closest('.item').remove(itemElement);
   });
 
+  itemElement.querySelector('.item__img').addEventListener('click', function () {
+    popupImg.classList.add('popup_opened', 'popup_opacity');
+    imgBigSize.src = itemLinkInput.value;
+    imgPopupCaption.textContent = itemTitleInput.value;
+  });
+
   galleryItems.prepend(itemElement);
   
   formAddItem.classList.remove('popup_opened');
@@ -126,11 +141,11 @@ function addItem(evt) {
 ElementFormAddItem.addEventListener('submit', addItem);
 
 //Работаем с попапом картинок
-const popup_img = document.querySelector('#popup-img');
+const popupImg = document.querySelector('#popup-img');
 const closeBtnImg = document.querySelector('.img-popup__close-icon');
 
 
 //Закроем окно редактирования профиля кликом на крестик
 closeBtnImg.addEventListener('click', function () {
-  popup_img.classList.remove('popup_opened', 'popup_opacity');
+  popupImg.classList.remove('popup_opened', 'popup_opacity');
 })
