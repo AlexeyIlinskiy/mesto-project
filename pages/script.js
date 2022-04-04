@@ -47,7 +47,7 @@ closeBtnItem.onclick = function() {
   formAddItem.classList.remove('popup_opened');
 }
 
-//Массив для карточек: Название, Линк на картинку
+//Массив для добавления карточек
 const initialCards = [
   {
     name: 'Архыз',
@@ -75,50 +75,7 @@ const initialCards = [
   }
 ];
 
-//Работаем с шаблоном создания карточки
-/*
-initialCards.forEach(function(element) {
-  const itemElement = itemTemplate.querySelector('.item').cloneNode(true); 
-  
-  itemElement.querySelector('.item__img').src = element.link;
-  itemElement.querySelector('.item__title').textContent = element.name;
-
-  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
-    evt.target.classList.add('item__btn-like_active');
-  }); 
-
-  galleryItems.append(itemElement);
-});
-
-
-//Создадим функцию добавления и удаления карточки
-
-function addItem(evt) {
-  evt.preventDefault();
-
-  const itemElement = itemTemplate.querySelector('.item').cloneNode(true); //Клонируем шаблон
-  
-  itemElement.querySelector('.item__img').src = itemLinkInput.value;
-  itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
-
-  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
-    evt.target.classList.add('item__btn-like_active');
-  });
-  
-  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
-    e.target.closest('.gallery__items').remove(itemElement.querySelector('.item'));
-  });
-  
-  galleryItems.prepend(itemElement);
-  
-  formAddItem.classList.remove('popup_opened');
-
-}
-
-ElementFormAddItem.addEventListener('submit', addItem);
-*/
-
-//Создадим карточки
+//Переменные для работы с добавлением карточек
 const ElementFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
 const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
