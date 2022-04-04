@@ -107,10 +107,10 @@ function addItem() {
   
   itemElement.querySelector('.item__img').src = itemLinkInput.value;
   itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
-  itemElement.querySelector('.item__btn-like').addEventListener('click'), function (evt) {
+/*  itemElement.querySelector('.item__btn-like').addEventListener('click'), function (evt) {
     evt.target.classList.add('item__btn-like_active');
   }
-
+*/
   galleryItems.prepend(itemElement);
 
   formAddItem.classList.remove('popup_opened');
