@@ -82,7 +82,6 @@ const itemTemplate = document.querySelector('#item-template').content; //Выб�
 const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
 const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
 
-
 initialCards.forEach(function(element) {
   const itemElement = itemTemplate.querySelector('.item').cloneNode(true); 
   
@@ -91,26 +90,21 @@ initialCards.forEach(function(element) {
 
   itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
     evt.target.classList.add('item__btn-like_active');
-  });
-  
-  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (event) {
-    event.target.closest('.gallery__items').remove(itemElement.querySelector('.item'));
-  });
+  }); 
 
   galleryItems.append(itemElement);
 });
 
 
 //Создадим функцию добавления карточки
-function addItem() {
+function addItem(evt) {
+  evt.preventDefault();
+
   const itemElement = itemTemplate.querySelector('.item').cloneNode(true); //Клонируем шаблон
   
   itemElement.querySelector('.item__img').src = itemLinkInput.value;
   itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
-/*  itemElement.querySelector('.item__btn-like').addEventListener('click'), function (evt) {
-    evt.target.classList.add('item__btn-like_active');
-  }
-*/
+
   galleryItems.prepend(itemElement);
 
   formAddItem.classList.remove('popup_opened');
