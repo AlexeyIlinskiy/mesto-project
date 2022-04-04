@@ -118,39 +118,3 @@ const likeButton = document.querySelector('.item__btn-like'); //выбрали �
     evt.target.classList.add('.item__btn-like_active');
 
   });
-
-
-/*
-directors.forEach(function (element) {
-  const directorElement = directorTemplate.cloneNode(true);
-
-  directorElement.querySelector('.directors__name').textContent = element.name;
-  directorElement.querySelector('.directors__description').textContent = element.career;
-  directorElement.querySelector('.directors__films').href = element.films;
-
-  directorsList.append(directorElement)
-})*/ 
-/*
-const elementsContainer = document.querySelector('.elements');
-const saveElements = document.querySelector('.form__button_popup_save');
-
-function addElements(designationValue, pictureValue) {
-  const elementsTemplate = document.querySelector('#elements-template').content;
-  const newElement = elementsTemplate.querySelector('.elements__rectangle').cloneNode(true);
-  
-  newElement.querySelector('.elements__text').textContent = designationValue;
-  newElement.querySelector('.elements__mask-group').textContent = pictureValue;
-  newElement.querySelector('.elements__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('elements__like_active');
-  });
-
-  elementsContainer.append(newElement);
-}
-
-saveElements.addEventListener('submit', function () {
-  const designationInput = document.querySelector('.form__input_popup_designation');
-  const pictureInput = document.querySelector('.form__input_popup_link-picture');
-  addElements(designationInput.value, pictureInput.value);
-  designationInput.value = '';
-  pictureInput.value = '';
-});*/
