@@ -124,3 +124,13 @@ function addItem(evt) {
 }
 
 ElementFormAddItem.addEventListener('submit', addItem);
+
+//Работаем с попапом картинок
+const popup_img = document.querySelector('#popup-img');
+const closeBtnImg = document.querySelector('.img-popup__close-icon');
+
+
+//Закроем окно редактирования профиля кликом на крестик
+closeBtnImg.addEventListener('click', function () {
+  popup_img.classList.remove('popup_opened', 'popup_opacity');
+})

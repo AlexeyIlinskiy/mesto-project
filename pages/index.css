@@ -29,7 +29,9 @@
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__img-container/popup__img-container.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_opacity/popup_opacity.css);
 
 @import url(../blocks/form-edit-profile/form-edit-profile.css);
 @import url(../blocks/form-edit-profile/__close-icon/form-edit-profile__close-icon.css);
@@ -44,5 +46,9 @@
 @import url(../blocks/form-new-item/__text-fields/form-new-item__text-fields.css);
 @import url(../blocks/form-new-item/__text-field/form-new-item__text-field.css);
 @import url(../blocks/form-new-item/__submit-btn/form-edit-profile__submit-btn.css);
+
+@import url(../blocks/img-popup/img-popup.css);
+@import url(../blocks/img-popup/__caption/img-popup__caption.css);
+@import url(../blocks/img-popup/__close-icon/img-popup__close-icon.css);
 
 @import url(../blocks/footer/__author/footer__author.css);

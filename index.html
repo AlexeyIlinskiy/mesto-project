@@ -136,17 +136,29 @@
           <button type="submit" id="form-new-item__submit-btn" value="save" class="form-new-item__submit-btn">Создать</button>
         </form>
       </div>
-    </div>  
+    </div>
+    <!--Попап-картинок-->
+    <div class="popup" id="popup-img">
+      <div class="popup__img-container">
+        <form name="form-view-img" id="form-view-img" class="form-view-img">
+          <button type="button" id="img-popup__close-icon" class="img-popup__close-icon"></button>
+          <img class = "img-popup" src = "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt = "">
+          <p class = "img-popup__caption">Архыз</p>
+        </form>      
+      </div>
+    </div>
   </main>
+
   <footer class="footer">
     <p class="footer__author">
       &copy;&nbsp;2022, Ильинский Алексей
     </p>
   </footer>
+  <!--Шаблон для добавления карточек-->
   <template id="item-template">
     <li class="item">
       <button type="button" class="item__btn-delete"></button>
-      <img class="item__img" alt="subscription">
+      <img class="item__img" alt="">
       <div class="item__title-place">
         <h2 class="item__title"></h2>
         <button type="button" class="item__btn-like"></button>
