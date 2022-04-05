@@ -30,7 +30,6 @@ function formSubmitHandler (evt) {
   nameUser.textContent = nameInput.value;
   jobUser.textContent = jobInput.value;
 
-  console.log(nameInput.value);
   formEditProfile.classList.remove('popup_opened');
 }
 
