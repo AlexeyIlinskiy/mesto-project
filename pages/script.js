@@ -104,16 +104,14 @@ initialCards.forEach(function (element) {
     e.target.closest('.item').remove(itemElement);
   });
   
-  itemElement.querySelector('.item__img').addEventListener('click', () => openPopup(imgPopup));
+ // itemElement.querySelector('.item__img').addEventListener('click', () => openPopup(imgPopup));
 
-  //return element.link, element.name;
-  /*
   itemElement.querySelector('.item__img').addEventListener('click', function () {
     imgPopup.classList.add('popup_opened', 'popup_opacity');
     imgBigSize.src = element.link;
     imgPopupCaption.textContent = element.name;
   });
-*/
+
   galleryItems.append(itemElement);
 })
 
