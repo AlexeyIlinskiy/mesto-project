@@ -79,7 +79,7 @@ const initialCards = [
 ];
 
 //Переменные для работы с добавлением карточек
-const ElementFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
+const elFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
 const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
 const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
@@ -146,7 +146,7 @@ function addItem(evt) {
   formAddItem.classList.remove('popup_opened');
 }
 
-ElementFormAddItem.addEventListener('submit', addItem);
+elFormAddItem.addEventListener('submit', addItem);
 
 //Работаем с попапом картинок
 const imgPopup = document.querySelector('#popup-img');
