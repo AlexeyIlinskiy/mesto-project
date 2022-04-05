@@ -1,10 +1,10 @@
-let editBtnProfile = document.querySelector('.profile__edit-button');
-let closeBtnProfile = document.querySelector('.form-edit-profile__close-icon')
-let formEditProfile = document.querySelector('#popup-edit-profile');
+const editBtnProfile = document.querySelector('.profile__edit-button');
+const closeBtnProfile = document.querySelector('.form-edit-profile__close-icon')
+const formEditProfile = document.querySelector('#popup-edit-profile');
 
-let addBtnItem = document.querySelector('.profile__add-button')
-let closeBtnItem = document.querySelector('.form-new-item__close-icon')
-let formAddItem = document.querySelector('#popup-add-item');
+const addBtnItem = document.querySelector('.profile__add-button')
+const closeBtnItem = document.querySelector('.form-new-item__close-icon')
+const formAddItem = document.querySelector('#popup-add-item');
 
 //Откроем окно редактирования профиля
 editBtnProfile.onclick = function() {
@@ -20,12 +20,11 @@ closeBtnProfile.onclick = function() {
 const formElement = document.querySelector('.form-edit-profile');
 const nameInput = document.querySelector('#form-edit-profile-name');
 const jobInput = document.querySelector('#form-edit-profile-about');
+let nameUser = document.querySelector('.profile__name');
+let jobUser = document.querySelector('.profile__about');
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
-  
-  let nameUser = document.querySelector('.profile__name');
-  let jobUser = document.querySelector('.profile__about');
 
   nameUser.textContent = nameInput.value;
   jobUser.textContent = jobInput.value;
