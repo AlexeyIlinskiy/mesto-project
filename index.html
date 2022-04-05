@@ -54,47 +54,46 @@
         </form>
       </div>
     </div>
-    <!--Форма добавления карточки-->
-    <div class="popup" id="popup-add-item">
-      <div class="popup__container">
-        <form method="get" name="form-new-item" id="form-new-item" class="form-new-item">
-          <button type="button" id="form-new-item__close-icon" class="form-new-item__close-icon"></button>
-          <h2 class="form-new-item__title">
-            Новое место
-          </h2>
-          <ul class="form-new-item__text-fields">
-            <li>
-              <label for="form-new-item-name">
-                <input type="text" name="name" id="form-new-item-name" class="form-new-item__text-field" placeholder="Название">
-              </label>
-            </li>
-            <li>
-              <label for="form-new-item-image">
-                <input type="text" name="image" id="form-new-item-image" class="form-new-item__text-field" placeholder="Ссылка на картинку">
-              </label>
-            </li>
-          </ul>
-          <button type="submit" id="form-new-item__submit-btn" value="save" class="form-new-item__submit-btn">Создать</button>
-        </form>
-      </div>
-    </div>
-    <!--Попап-картинок-->
-    <div class="popup" id="popup-img">
-      <div class="popup__img-container">
-        <form name="form-view-img" id="form-view-img" class="form-view-img">
-          <button type="button" id="img-popup__close-icon" class="img-popup__close-icon"></button>
-          <img class = "img-popup" src = "" alt = "">
-          <p class = "img-popup__caption"></p>
-        </form>      
-      </div>
-    </div>
   </main>
-
   <footer class="footer">
     <p class="footer__author">
       &copy;&nbsp;2022, Ильинский Алексей
     </p>
   </footer>
+  <!--Форма добавления карточки-->
+  <div class="popup" id="popup-add-item">
+    <div class="popup__container">
+      <form method="get" name="form-new-item" id="form-new-item" class="form-new-item">
+        <button type="button" id="form-new-item__close-icon" class="form-new-item__close-icon"></button>
+        <h2 class="form-new-item__title">
+          Новое место
+        </h2>
+        <ul class="form-new-item__text-fields">
+          <li>
+            <label for="form-new-item-name">
+              <input type="text" name="name" id="form-new-item-name" class="form-new-item__text-field" placeholder="Название">
+            </label>
+          </li>
+          <li>
+            <label for="form-new-item-image">
+              <input type="url" name="image" id="form-new-item-image" class="form-new-item__text-field" placeholder="Ссылка на картинку">
+            </label>
+          </li>
+        </ul>
+        <button type="submit" id="form-new-item__submit-btn" value="save" class="form-new-item__submit-btn">Создать</button>
+      </form>
+    </div>
+  </div>
+  <!--Попап-картинок-->
+  <div class="popup" id="popup-img">
+    <div class="popup__img-container">
+      <form name="form-view-img" id="form-view-img" class="form-view-img">
+        <button type="button" id="img-popup__close-icon" class="img-popup__close-icon"></button>
+        <img class = "img-popup" src = "" alt = "">
+        <p class = "img-popup__caption"></p>
+      </form>      
+    </div>
+  </div>
   <!--Шаблон для добавления карточек-->
   <template id="item-template">
     <li class="item">
