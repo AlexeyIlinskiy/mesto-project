@@ -125,6 +125,7 @@ function addItem(evt) {
   const itemElement = itemTemplate.querySelector('.item').cloneNode(true);
 
   itemElement.querySelector('.item__img').src = itemLinkInput.value;
+  itemElement.querySelector('.item__img').alt = itemTitleInput.value;
   itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
 
   itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
