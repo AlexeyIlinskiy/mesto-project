@@ -1,18 +1,18 @@
-const editBtnProfile = document.querySelector('.profile__edit-button');
-const closeBtnProfile = document.querySelector('.form-edit-profile__close-icon')
+const btnEditProfile = document.querySelector('.profile__edit-button');
+const btnCloseProfile = document.querySelector('.form-edit-profile__close-icon')
 const formEditProfile = document.querySelector('#popup-edit-profile');
 
-const addBtnItem = document.querySelector('.profile__add-button')
-const closeBtnItem = document.querySelector('.form-new-item__close-icon')
+const btnAddItem = document.querySelector('.profile__add-button')
+const btnCloseItem = document.querySelector('.form-new-item__close-icon')
 const formAddItem = document.querySelector('#popup-add-item');
 
 //Откроем окно редактирования профиля
-editBtnProfile.onclick = function() {
+btnEditProfile.onclick = function() {
   formEditProfile.classList.add('popup_opened');
 }
 
 //Закроем окно редактирования профиля кликом на крестик
-closeBtnProfile.onclick = function() {
+btnCloseProfile.onclick = function() {
   formEditProfile.classList.remove('popup_opened');
 }
 
@@ -36,12 +36,12 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 
 //Откроем окно добавления карточки
-addBtnItem.onclick = function() {
+btnAddItem.onclick = function() {
   formAddItem.classList.add('popup_opened');
 }
 
 //Закроем окно добавления карточки кликом на крестик
-closeBtnItem.onclick = function() {
+btnCloseItem.onclick = function() {
   formAddItem.classList.remove('popup_opened');
 }
 
@@ -139,11 +139,11 @@ function addItem(evt) {
 ElementFormAddItem.addEventListener('submit', addItem);
 
 //Работаем с попапом картинок
-const popupImg = document.querySelector('#popup-img');
-const closeBtnImg = document.querySelector('.img-popup__close-icon');
+const imgPopup = document.querySelector('#popup-img');
+const btnCloseImg = document.querySelector('.img-popup__close-icon');
 
 
 //Закроем окно редактирования профиля кликом на крестик
-closeBtnImg.addEventListener('click', function () {
-  popupImg.classList.remove('popup_opened', 'popup_opacity');
+btnCloseImg.addEventListener('click', function () {
+  imgPopup.classList.remove('popup_opened', 'popup_opacity');
 })
