@@ -19,10 +19,6 @@ function closePopup(popup) {
 } 
 
 
-
-//Закроем окно редактирования профиля кликом на крестик
-btnCloseProfile.addEventListener('click', () => closePopup(formEditProfile));
-
 //Редактирование профиля
 const formElement = document.querySelector('.form-edit-profile');
 const nameInput = document.querySelector('#form-edit-profile-name');
@@ -37,9 +33,6 @@ btnEditProfile.addEventListener('click', function () {
   jobInput.value = jobUser.textContent;
 });
 
-
-
-
 function formSubmitHandler (evt) {
   evt.preventDefault();
   nameUser.textContent = nameInput.value;
@@ -49,6 +42,8 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
+//Закроем окно редактирования профиля кликом на крестик
+btnCloseProfile.addEventListener('click', () => closePopup(formEditProfile));
 
 //Откроем окно добавления карточки
 btnAddItem.addEventListener('click', function () {
@@ -58,8 +53,7 @@ btnAddItem.addEventListener('click', function () {
 });
 
 //Закроем окно добавления карточки кликом на крестик
-btnCloseItem.addEventListener('click', function () {
-  
+btnCloseItem.addEventListener('click', function () {  
   closePopup(formAddItem)
 });
 
@@ -92,7 +86,6 @@ const initialCards = [
 ];
 
 //Переменные для работы c карточками
-const elFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
 const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
 const itemElementImg = itemTemplate.querySelector('.item__img'); //Выберем все картинки карточек
@@ -100,9 +93,15 @@ const itemElementName = itemTemplate.querySelector('.item__title'); //Выбер
 
 //Переменные для работы с большой картинкой
  const imgPopupOpen = document.querySelector('#popup-img');
- const formViewImg = document.querySelector('.form-view-img');
- const imgBigSize = document.querySelector('.img-popup');
+ const formViewImg = document.querySelector('.img-popup');
+ const imgBigSize = document.querySelector('.img-popup__img');
  const imgPopupCaption = document.querySelector('.img-popup__caption');
+ const btnCloseImg = imgPopupOpen.querySelector('.img-popup__close-icon');
+
+  //Закроем картинки кликом на крестик
+  btnCloseImg.addEventListener('click', function () {  
+    closePopup(imgPopupOpen);
+  });
 
 //Создадим шаблон карточки
 
@@ -158,3 +157,4 @@ formImgNew.addEventListener('submit', function(evt) {
   renderCard(card, galleryItems);
   closePopup(formAddItem);
 });
+
