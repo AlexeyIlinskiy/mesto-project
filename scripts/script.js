@@ -7,7 +7,6 @@ const btnCloseItem = document.querySelector('.form-new-item__close-icon')
 const formAddItem = document.querySelector('#popup-add-item');
 
 const popup = document.querySelectorAll('.popup'); //соберём все popup в одну переменную
-console.log(popup);
 
 //Функция открытия всех popup-окон
 function openPopup(popup) {
@@ -20,7 +19,11 @@ function closePopup(popup) {
 } 
 
 //Откроем окно редактирования профиля
-btnEditProfile.addEventListener('click', () => openPopup(formEditProfile));
+btnEditProfile.addEventListener('click', function () {
+  openPopup(formEditProfile)
+  nameInput.value = nameUser.textContent;
+  jobInput.value = jobUser.textContent;
+});
 
 //Закроем окно редактирования профиля кликом на крестик
 btnCloseProfile.addEventListener('click', () => closePopup(formEditProfile));
@@ -34,10 +37,8 @@ let jobUser = document.querySelector('.profile__about');
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
-
   nameUser.textContent = nameInput.value;
   jobUser.textContent = jobInput.value;
-
   formEditProfile.classList.remove('popup_opened');
 }
 
@@ -45,10 +46,17 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 
 //Откроем окно добавления карточки
-btnAddItem.addEventListener('click', () => openPopup(formAddItem));
+btnAddItem.addEventListener('click', function () {
+  itemLinkInput.value = '';
+  itemTitleInput.value = '';
+  openPopup(formAddItem)
+});
 
 //Закроем окно добавления карточки кликом на крестик
-btnCloseItem.addEventListener('click', () => closePopup(formAddItem));
+btnCloseItem.addEventListener('click', function () {
+  
+  closePopup(formAddItem)
+});
 
 //Массив для добавления карточек
 const initialCards = [
@@ -78,79 +86,70 @@ const initialCards = [
   }
 ];
 
-//Переменные для работы с добавлением карточек
+//Переменные для работы c карточками
 const elFormAddItem = document.querySelector('.form-new-item'); //Выберем форму добавления карточки
 const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
-const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
-const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
-const formViewImg = document.querySelector('.form-view-img');
-const imgBigSize = document.querySelector('.img-popup');
-const imgPopupCaption = document.querySelector('.img-popup__caption');
+const itemElementImg = itemTemplate.querySelector('.item__img'); //Выберем все картинки карточек
+const itemElementName = itemTemplate.querySelector('.item__title'); //Выберем названия карточек
 
-//Функция вывода 6 карточек по умолчанию
-initialCards.forEach(function (element) {
-  const itemElement = itemTemplate.querySelector('.item').cloneNode(true);
+//Переменные для работы с большой картинкой
+ const imgPopupOpen = document.querySelector('#popup-img');
+ const formViewImg = document.querySelector('.form-view-img');
+ const imgBigSize = document.querySelector('.img-popup');
+ const imgPopupCaption = document.querySelector('.img-popup__caption');
 
-  itemElement.querySelector('.item__img').src = element.link;
-  itemElement.querySelector('.item__title').textContent = element.name;
-  itemElement.querySelector('.item__img').alt = element.name;
+//Создадим шаблон карточки
 
-  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('item__btn-like_active');
-  });
+function createCard (link, name) {  
   
-  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
-    e.target.closest('.item').remove(itemElement);
-  });
+  itemElementImg.src = link;
+  itemElementName.textContent = name;
+  itemElementImg.alt = name;
   
- // itemElement.querySelector('.item__img').addEventListener('click', () => openPopup(imgPopup));
+  const itemElement = itemTemplate.cloneNode(true);
 
-  itemElement.querySelector('.item__img').addEventListener('click', function () {
-    imgPopup.classList.add('popup_opened', 'popup_opacity');
-    imgBigSize.src = element.link;
-    imgPopupCaption.textContent = element.name;
+  const btnLike = itemElement.querySelector('.item__btn-like');
+  btnLike.addEventListener('click', function (e) {
+    e.target.classList.toggle('item__btn-like_active');
   });
-
-  galleryItems.append(itemElement);
-})
-
-//Функция добавления карточки пользователем
-
-function addItem(evt) {
-  evt.preventDefault();
-
-  const itemElement = itemTemplate.querySelector('.item').cloneNode(true);
-
-  itemElement.querySelector('.item__img').src = itemLinkInput.value;
-  itemElement.querySelector('.item__img').alt = itemTitleInput.value;
-  itemElement.querySelector('.item__title').textContent = itemTitleInput.value;
-
-  itemElement.querySelector('.item__btn-like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('item__btn-like_active');
-  });
-
-  itemElement.querySelector('.item__btn-delete').addEventListener('click', function (e) {
+ 
+  const btnDelete = itemElement.querySelector('.item__btn-delete');
+  btnDelete.addEventListener('click', function (e) {
     e.target.closest('.item').remove(itemElement);
   });
 
-  itemElement.querySelector('.item__img').addEventListener('click', function () {
-    imgPopup.classList.add('popup_opened', 'popup_opacity');
-    imgBigSize.src = itemLinkInput.value;
-    imgPopupCaption.textContent = itemTitleInput.value;
+  const imgFullSize = itemElement.querySelector('.item__img');
+  imgFullSize.addEventListener('click',  function () {
+    formViewImg.classList.add('popup_opened');
+    imgBigSize.src = link;
+    imgBigSize.alt = name;
+    imgPopupCaption.textContent = name;
+    openPopup(imgPopupOpen);  
   });
 
-  galleryItems.prepend(itemElement);
-  
-  formAddItem.classList.remove('popup_opened');
+  return itemElement;
+}
+//Функция, которая будет рендерить вставлять карточки в указанный нами контейнер
+function renderCard(card, container) {
+  container.prepend(card);
 }
 
-elFormAddItem.addEventListener('submit', addItem);
+//Выведем 6 карточек по умолчанию
+initialCards.forEach(function(element) {
+  const card = createCard(element.link, element.name);
+  renderCard(card, galleryItems);
+});
 
-//Работаем с попапом картинок
-const imgPopup = document.querySelector('#popup-img');
-const btnCloseImg = document.querySelector('.img-popup__close-icon');
+//Дадим пользователю добавить карточку
+const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
+const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
+const formImgNew = document.querySelector('.form-new-item');
 
+formImgNew.addEventListener('submit', function(evt) {
+  evt.preventDefault();
 
-//Закроем картинку кликом на крестик
-btnCloseImg.addEventListener('click', () => closePopup(imgPopup));
+  const card = createCard(itemLinkInput.value, itemTitleInput.value);
+  renderCard(card, galleryItems);
+  closePopup(formAddItem);
+});

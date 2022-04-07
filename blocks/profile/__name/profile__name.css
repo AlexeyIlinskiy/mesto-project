@@ -5,6 +5,9 @@
   align-self: end;
   color: rgba(255, 255, 255, 1);
   margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
