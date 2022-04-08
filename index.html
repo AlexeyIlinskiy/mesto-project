@@ -30,41 +30,43 @@
 
       </ul>
     </section>
-<!--Форма редактирования профиля-->
-    <div class="popup" id="popup-edit-profile">
-      <div class="popup__container">
-        <form method="get" name="form-edit-profile" id="form-edit-profile" class="form-edit-profile">
-          <button type="button" id="form-edit-profile__close-icon" class="form-edit-profile__close-icon"></button>
-          <h2 class="form-edit-profile__title">
-            Редактировать профиль
-          </h2>
-          <ul class="form-edit-profile__text-fields">
-            <li>
-              <label for="form-edit-profile-name">
-                <input type="text" name="name" id="form-edit-profile-name" class="form-edit-profile__text-field" placeholder="Как вас зовут?">
-              </label>
-            </li>
-            <li>
-              <label for="form-edit-profile-about">
-                <input type="text" name="about" id="form-edit-profile-about" class="form-edit-profile__text-field" placeholder="Чем вы занимаетесь?">
-              </label>
-            </li>
-          </ul>
-          <button type="submit" id="form-edit-profile__submit-btn" value="save" class="form-edit-profile__submit-btn">Сохранить</button>
-        </form>
-      </div>
-    </div>
+
   </main>
   <footer class="footer">
     <p class="footer__author">
       &copy;&nbsp;2022, Ильинский Алексей
     </p>
   </footer>
+<!--Форма редактирования профиля-->
+<div class="popup" id="popup-edit-profile">
+  <div class="popup__container">
+    <form method="get" name="form-edit-profile" id="form-edit-profile" class="form-edit-profile">
+      <button type="button" id="edit-profile__btn-close" class="popup__btn-close"></button>
+      <h2 class="form-edit-profile__title">
+        Редактировать профиль
+      </h2>
+      <ul class="form-edit-profile__text-fields">
+        <li>
+          <label for="form-edit-profile-name">
+            <input type="text" name="name" id="form-edit-profile-name" class="form-edit-profile__text-field" placeholder="Как вас зовут?">
+          </label>
+        </li>
+        <li>
+          <label for="form-edit-profile-about">
+            <input type="text" name="about" id="form-edit-profile-about" class="form-edit-profile__text-field" placeholder="Чем вы занимаетесь?">
+          </label>
+        </li>
+      </ul>
+      <button type="submit" id="form-edit-profile__submit-btn" value="save" class="form-edit-profile__submit-btn">Сохранить</button>
+    </form>
+  </div>
+</div>
+
   <!--Форма добавления карточки-->
   <div class="popup" id="popup-add-item">
     <div class="popup__container">
       <form method="get" name="form-new-item" id="form-new-item" class="form-new-item">
-        <button type="button" id="form-new-item__close-icon" class="form-new-item__close-icon"></button>
+        <button type="button" id="add-item__btn-close" class="popup__btn-close"></button>
         <h2 class="form-new-item__title">
           Новое место
         </h2>
@@ -89,12 +91,13 @@
   <div class="popup img-popup_opacity" id="popup-img">
     <div class="popup__img-container">
       <form name="img-popup-form" id="img-popup-form" class="img-popup">
-        <button type="button" id="img-popup__close-icon" class="img-popup__close-icon"></button>
+        <button type="button" id="full-img__btn-close" class="popup__btn-close"></button>
         <img class = "img-popup__img" src = "" alt = "">
         <p class = "img-popup__caption"></p>
       </form>      
     </div>
   </div>
+
   <!--Шаблон для добавления карточек-->
   <template id="item-template">
     <li class="item">

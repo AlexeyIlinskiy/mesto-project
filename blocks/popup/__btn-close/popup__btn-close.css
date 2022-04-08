@@ -1,8 +1,8 @@
-.form-edit-profile__close-icon {
+.popup__btn-close{
   width: 32px;
   height: 32px;
-  top: calc(-8px - 32px);
-  right: calc(-8px - 32px);
+  top: -40px;
+  right: -40px;
   position: absolute;
   opacity: 1;
   background-image: url(../../../images/Close_Icon.svg);
@@ -15,12 +15,8 @@
   cursor: pointer;
 }
 
-.form-edit-profile__close-icon:hover {
-  opacity: 0.6;
-}
-
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
-  .form-edit-profile__close-icon {
+.popup__btn-close {
     width: 20px;
     height: 20px;
     top: calc(-16px - 40px/2);
