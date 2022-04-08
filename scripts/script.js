@@ -25,7 +25,6 @@ btnClosePopup.forEach(function(btn) {
   })
 })
 
-
 //Редактирование профиля
 const formElement = document.querySelector('.form-edit-profile');
 const nameInput = document.querySelector('#form-edit-profile-name');
@@ -93,7 +92,7 @@ const itemElementName = itemTemplate.querySelector('.item__title'); //Выбер
 
 //Переменные для работы с большой картинкой
  const imgPopupOpen = document.querySelector('#popup-img');
- const formViewImg = document.querySelector('.img-popup');
+// const formViewImg = document.querySelector('.img-popup');
  const imgBigSize = document.querySelector('.img-popup__img');
  const imgPopupCaption = document.querySelector('.img-popup__caption');
 
@@ -118,8 +117,8 @@ function createCard (link, name) {
   });
 
   const imgFullSize = itemElement.querySelector('.item__img');
-  imgFullSize.addEventListener('click',  function () {
-    formViewImg.classList.add('popup_opened');
+  imgFullSize.addEventListener('click',  function (e) {
+    imgPopupOpen.classList.add('popup_opened');
     imgBigSize.src = link;
     imgBigSize.alt = name;
     imgPopupCaption.textContent = name;

@@ -1,4 +1,6 @@
 .profile__name {
+  min-width: 300px;
+  max-width: 350px;
   font-size: 42px;
   line-height: 45px;
   font-weight: 500;
@@ -12,6 +14,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
   .profile__name {
+    max-width: 238px;
     font-size: 27px;
     line-height: 32.68px;
     justify-self: end;
