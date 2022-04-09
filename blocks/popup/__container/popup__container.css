@@ -6,13 +6,11 @@
   border-radius: 10px;
   background-color:rgba(255, 255, 255, 1);
   position: relative;
-  margin: 195px auto;
 }
 
  @media screen and (min-width: 320px) and (max-width: 879.98px) {
   .popup__container {
     max-width: 282px;
     max-height:322px;
-    margin: 123px auto;
   }  
 }
