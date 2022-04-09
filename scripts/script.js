@@ -4,8 +4,6 @@ const formEditProfile = document.querySelector('#popup-edit-profile');
 const btnAddItem = document.querySelector('.profile__add-button')
 const formAddItem = document.querySelector('#popup-add-item');
 
-// const popups = document.querySelectorAll('.popup');
-
 //Функция открытия всех popup-окон
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -63,8 +61,6 @@ const initialCards = [
 //Переменные для работы c карточками
 const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
-const itemElementImg = itemTemplate.querySelector('.item__img'); //Выберем все картинки карточек
-const itemElementName = itemTemplate.querySelector('.item__title'); //Выберем названия карточек
 
 //Переменные для работы с большой картинкой
  const imgPopupOpen = document.querySelector('#popup-img');
@@ -72,15 +68,15 @@ const itemElementName = itemTemplate.querySelector('.item__title'); //Выбер
  const imgPopupCaption = document.querySelector('.img-popup__caption');
 
 //Создадим шаблон карточки
-
 function createCard (link, name) {  
-  
+  const itemElementImg = itemTemplate.querySelector('.item__img'); //Выберем все картинки карточек
+  const itemElementName = itemTemplate.querySelector('.item__title'); //Выберем названия карточек
+  const itemElement = itemTemplate.cloneNode(true);
+
   itemElementImg.src = link;
   itemElementName.textContent = name;
   itemElementImg.alt = name;
   
-  const itemElement = itemTemplate.cloneNode(true);
-
   const btnLike = itemElement.querySelector('.item__btn-like');
   btnLike.addEventListener('click', function (e) {
     e.target.classList.toggle('item__btn-like_active');
@@ -94,7 +90,6 @@ function createCard (link, name) {
 //Открытие картинки в полный размер
   const imgFullSize = itemElement.querySelector('.item__img');
   imgFullSize.addEventListener('click',  function (e) {
-    imgPopupOpen.classList.add('popup_opened');
     imgBigSize.src = link;
     imgBigSize.alt = name;
     imgPopupCaption.textContent = name;
