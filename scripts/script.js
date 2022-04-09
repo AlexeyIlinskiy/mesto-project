@@ -29,8 +29,8 @@ btnClosePopup.forEach(function(btn) {
 const formElement = document.querySelector('.form-edit-profile');
 const nameInput = document.querySelector('#form-edit-profile-name');
 const jobInput = document.querySelector('#form-edit-profile-about');
-let nameUser = document.querySelector('.profile__name');
-let jobUser = document.querySelector('.profile__about');
+const nameUser = document.querySelector('.profile__name');
+const jobUser = document.querySelector('.profile__about');
 
 //Откроем окно редактирования профиля
 btnEditProfile.addEventListener('click', function () {
