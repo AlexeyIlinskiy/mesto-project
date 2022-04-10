@@ -124,9 +124,9 @@ formImgNew.addEventListener('submit', function(evt) {
 
 //Открытие окна редактирования профиля
 btnEditProfile.addEventListener('click', function () {
-  openPopup(formEditProfile)
   nameInput.value = nameUser.textContent.trim();
   jobInput.value = jobUser.textContent.trim();
+  openPopup(formEditProfile)
 });
 
 //Открытие окна добавления карточки
