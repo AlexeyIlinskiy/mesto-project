@@ -69,9 +69,9 @@ const itemTemplate = document.querySelector('#item-template').content; //Выб�
 
 //Создадим шаблон карточки
 function createCard (link, name) {  
-  const itemElementImg = itemTemplate.querySelector('.item__img'); //Выберем все картинки карточек
-  const itemElementName = itemTemplate.querySelector('.item__title'); //Выберем названия карточек
   const itemElement = itemTemplate.cloneNode(true);
+  const itemElementImg = itemElement.querySelector('.item__img'); //Выберем все картинки карточек
+  const itemElementName = itemElement.querySelector('.item__title'); //Выберем названия карточек
 
   itemElementImg.src = link;
   itemElementName.textContent = name;
