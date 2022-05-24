@@ -1,0 +1,19 @@
+{
+  "name": "mesto-project",
+  "version": "0.0.1",
+  "description": "***Выполнил: Ильинский Алексей, alexey.ilinskiy@yandex.ru***",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexeyIlinskiy/mesto-project.git"
+  },
+  "author": "Alexey Ilinskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexeyIlinskiy/mesto-project/issues"
+  },
+  "homepage": "https://github.com/AlexeyIlinskiy/mesto-project#readme"
+}

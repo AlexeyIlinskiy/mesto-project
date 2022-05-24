@@ -144,3 +144,20 @@ btnClosePopup.forEach(function(btn) {
     closePopup(e.target.closest('.popup'));
   })
 })
+
+// //Обработчик события клика по кнопке Esc
+// const popupContainer = document.querySelector('.popup__container');
+
+
+// function keyHandler(evt) {
+//   if (evt.key === 'Escape') {
+//     closePopup(evt.target.closest('.popup'));
+//   }
+// }
+// formEditProfile.addEventListener('keydown', keyHandler);
+
+
+// //formEditProfile.addEventListener('keydown', (evt) => console.log(evt.key));
+
+// //Выберем все элементы у которых есть класс popup
+// //Если элемент имеет класс popup_opened, то при клике на Escape надо удалять класс
