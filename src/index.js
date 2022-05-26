@@ -1,3 +1,6 @@
+import '../styles/index.css'; // добавьте импорт главного файла стилей
+//import './vendor/normalize.css';
+
 const btnEditProfile = document.querySelector('.profile__edit-button');
 const formEditProfile = document.querySelector('#popup-edit-profile');
 
@@ -29,32 +32,40 @@ function formSubmitHandler (evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+//Импортируем картинки для webpack
+const arkhyz = new URL ('./images/arkhyz.jpg', import.meta.url);
+const chelyab = new URL ('./images/chelyabinsk-oblast.jpg', import.meta.url);
+const ivanovo = new URL ('./images/ivanovo.jpg', import.meta.url);
+const kamchatka = new URL ('./images/kamchatka.jpg', import.meta.url);
+const kholmogory = new URL ('./images/kholmogorsky-rayon.jpg', import.meta.url);
+const baikal = new URL ('./images/baikal.jpg', import.meta.url);
+
 
 //Массив для добавления карточек
 const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: arkhyz
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: chelyab
   },
   {
     name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    link: ivanovo
   },
   {
     name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    link: kamchatka
   },
   {
     name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    link: kholmogory
   },
   {
     name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    link: baikal
   }
 ];
 

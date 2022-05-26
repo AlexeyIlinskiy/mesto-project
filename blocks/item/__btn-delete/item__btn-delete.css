@@ -4,7 +4,7 @@
   top: 20px;
   right: 20px;
   position: absolute;
-  background-image: url(../../../images/trash.svg);
+  background-image: url(../../../src/images/trash.svg);
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;

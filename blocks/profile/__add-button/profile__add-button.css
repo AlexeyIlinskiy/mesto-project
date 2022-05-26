@@ -7,7 +7,7 @@
   cursor: pointer;
   padding: 0;
   width: 150px;
-  background-image: url(../../../images/Add_btn_s.svg);
+  background-image: url(../../../src/images/Add_btn_s.svg);
   justify-self: end;
 }
 .profile__add-button:hover {
@@ -18,7 +18,7 @@
   .profile__add-button {
     width: 282px;
     margin: 36px 0px 0px;
-    background-image: url(../../../images/Add_btn_l.svg);
+    background-image: url(../../../src/images/Add_btn_l.svg);
     background-repeat: no-repeat;
     justify-self: center;
   }
