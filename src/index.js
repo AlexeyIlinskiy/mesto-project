@@ -1,11 +1,16 @@
 import '../styles/index.css'; // добавьте импорт главного файла стилей
-//import './vendor/normalize.css';
 
-const btnEditProfile = document.querySelector('.profile__edit-button');
-const formEditProfile = document.querySelector('#popup-edit-profile');
-
-const btnAddItem = document.querySelector('.profile__add-button')
+//Формы
+const formEditProfile = document.querySelector('#popup-edit-profile'); 
 const formAddItem = document.querySelector('#popup-add-item');
+const imgPopupOpen = document.querySelector('#popup-img');
+
+
+//Кнопки
+const btnEditProfile = document.querySelector('.profile__edit-button');
+const btnAddItem = document.querySelector('.profile__add-button');
+const btnClosePopup = document.querySelectorAll('.popup__btn-close');
+
 
 //Функция открытия всех popup-окон
 function openPopup(popup) {
@@ -32,7 +37,8 @@ function formSubmitHandler (evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
-//Импортируем картинки для webpack
+
+//Импортируем картинки, которые хранятся локально
 const arkhyz = new URL ('./images/arkhyz.jpg', import.meta.url);
 const chelyab = new URL ('./images/chelyabinsk-oblast.jpg', import.meta.url);
 const ivanovo = new URL ('./images/ivanovo.jpg', import.meta.url);
@@ -74,7 +80,6 @@ const galleryItems = document.querySelector('.gallery__items'); //Выберем
 const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
 
 //Переменные для работы с большой картинкой
- const imgPopupOpen = document.querySelector('#popup-img');
  const imgBigSize = document.querySelector('.img-popup__img');
  const imgPopupCaption = document.querySelector('.img-popup__caption');
 
@@ -99,8 +104,7 @@ function createCard (link, name) {
   });
 
 //Открытие картинки в полный размер
-  const imgFullSize = itemElement.querySelector('.item__img');
-  imgFullSize.addEventListener('click',  function (e) {
+itemElementImg.addEventListener('click',  function (e) {
     imgBigSize.src = link;
     imgBigSize.alt = name;
     imgPopupCaption.textContent = name;
@@ -109,6 +113,7 @@ function createCard (link, name) {
 
   return itemElement;
 }
+
 //Функция, которая будет рендерить вставлять карточки в указанный нами контейнер
 function renderCard(card, container) {
   container.prepend(card);
@@ -148,27 +153,18 @@ btnAddItem.addEventListener('click', function () {
 });
 
 //Закрытие всех попапов через крестик
-const btnClosePopup = document.querySelectorAll('.popup__btn-close');
-
 btnClosePopup.forEach(function(btn) {
   btn.addEventListener('click', function (e) {
     closePopup(e.target.closest('.popup'));
   })
 })
 
-// //Обработчик события клика по кнопке Esc
-// const popupContainer = document.querySelector('.popup__container');
+//Закрытие всех форм по кнопке Esc  
+document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+       closePopup(formAddItem),
+       closePopup(formEditProfile);
+       closePopup(imgPopupOpen);
+    }
+  })
 
-
-// function keyHandler(evt) {
-//   if (evt.key === 'Escape') {
-//     closePopup(evt.target.closest('.popup'));
-//   }
-// }
-// formEditProfile.addEventListener('keydown', keyHandler);
-
-
-// //formEditProfile.addEventListener('keydown', (evt) => console.log(evt.key));
-
-// //Выберем все элементы у которых есть класс popup
-// //Если элемент имеет класс popup_opened, то при клике на Escape надо удалять класс
