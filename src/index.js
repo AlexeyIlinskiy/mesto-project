@@ -1,4 +1,4 @@
-import './styles/index.css'; // добавьте импорт главного файла стилей
+import './styles/index.css'; // импорт главного файла стилей
 
 //Формы
 const formEditProfile = document.querySelector('#popup-edit-profile'); 
@@ -12,9 +12,41 @@ const btnAddItem = document.querySelector('.profile__add-button');
 const btnClosePopup = document.querySelectorAll('.popup__btn-close');
 
 
-//Функция открытия всех popup-окон
+//Работаем с модальными окнами
+
+//Открытие окна
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+
+//Закрытие по кнопке Esc
+  document.addEventListener('keydown', function(evt) {
+    if (evt.key === 'Escape' && popup.classList.contains('popup_opened')) {
+      popup.classList.remove('popup_opened');
+    }
+  });
+  
+//Закрытие по клику
+  popup.addEventListener('click', function() {
+    if (popup.classList.contains('popup_opened')) {
+      popup.classList.remove('popup_opened');
+    }
+  });
+
+//Закрытие по крестику
+  btnClosePopup.forEach(function(btn) {
+    btn.addEventListener('click', function (evt) {
+      closePopup(evt.target.closest('.popup'));
+    });
+  });
+
+//Останавливаем всплытие, чтобы не закрывалось модальное окно
+  const popupsContainers = document.querySelectorAll('.popup__container');
+  popupsContainers.forEach(function(elem) {
+    elem.addEventListener('click', function(evt) {
+      evt.stopPropagation();
+    });
+  });
+
 }
 
 //Функция закрытия всех popup-окон
@@ -94,17 +126,17 @@ function createCard (link, name) {
   itemElementImg.alt = name;
   
   const btnLike = itemElement.querySelector('.item__btn-like');
-  btnLike.addEventListener('click', function (e) {
-    e.target.classList.toggle('item__btn-like_active');
+  btnLike.addEventListener('click', function (evt) {
+    evt.target.classList.toggle('item__btn-like_active');
   });
  
   const btnDelete = itemElement.querySelector('.item__btn-delete');
-  btnDelete.addEventListener('click', function (e) {
-    e.target.closest('.item').remove(itemElement);
+  btnDelete.addEventListener('click', function (evt) {
+    evt.target.closest('.item').remove(itemElement);
   });
 
 //Открытие картинки в полный размер
-itemElementImg.addEventListener('click',  function (e) {
+itemElementImg.addEventListener('click',  function () {
     imgBigSize.src = link;
     imgBigSize.alt = name;
     imgPopupCaption.textContent = name;
@@ -120,8 +152,8 @@ function renderCard(card, container) {
 }
 
 //Выведем 6 карточек по умолчанию
-initialCards.forEach(function(element) {
-  const card = createCard(element.link, element.name);
+initialCards.forEach(function(elem) {
+  const card = createCard(elem.link, elem.name);
   renderCard(card, galleryItems);
 });
 
@@ -151,20 +183,4 @@ btnAddItem.addEventListener('click', function () {
   itemTitleInput.value = '';
   openPopup(formAddItem)
 });
-
-//Закрытие всех попапов через крестик
-btnClosePopup.forEach(function(btn) {
-  btn.addEventListener('click', function (e) {
-    closePopup(e.target.closest('.popup'));
-  })
-})
-
-//Закрытие всех форм по кнопке Esc  
-document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-       closePopup(formAddItem),
-       closePopup(formEditProfile);
-       closePopup(imgPopupOpen);
-    }
-  })
 
