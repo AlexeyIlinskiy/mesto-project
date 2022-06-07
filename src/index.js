@@ -23,7 +23,7 @@ function closePopup(popup) {
 } 
 
 //Редактирование профиля
-const formElement = document.querySelector('.form-edit-profile');
+const formElement = document.querySelector('#form-edit-profile');
 const nameInput = document.querySelector('#form-edit-profile-name');
 const jobInput = document.querySelector('#form-edit-profile-about');
 const nameUser = document.querySelector('.profile__name');
@@ -126,9 +126,9 @@ initialCards.forEach(function(element) {
 });
 
 //Дадим пользователю добавить карточку
+const formImgNew = document.querySelector('#form-new-item');
 const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
 const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
-const formImgNew = document.querySelector('.form-new-item');
 
 formImgNew.addEventListener('submit', function(evt) {
   evt.preventDefault();

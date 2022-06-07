@@ -1,4 +1,4 @@
-.form-edit-profile__text-fields {
+.popup__inputs {
   width: 100%;
   margin: 54px auto 0px;
   padding: 0;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
-.form-edit-profile__text-fields {
+.popup__inputs {
   margin: 80px auto 0px;
 }
 }

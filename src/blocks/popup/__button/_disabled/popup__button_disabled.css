@@ -1,4 +1,4 @@
-.form-edit-profile__submit-btn_inactive {
+.popup__button_disabled {
   border: 2px solid rgba(0, 0, 0, 0.2);
   background-color: transparent;
   color: rgba(0, 0, 0, 0.2);
