@@ -1,4 +1,4 @@
-import '../styles/index.css'; // добавьте импорт главного файла стилей
+import './styles/index.css'; // добавьте импорт главного файла стилей
 
 //Формы
 const formEditProfile = document.querySelector('#popup-edit-profile'); 
