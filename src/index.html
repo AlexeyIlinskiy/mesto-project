@@ -48,11 +48,13 @@
         <li>
           <label for="form-edit-profile-name">
             <input type="text" name="name" id="form-edit-profile-name" class="form-edit-profile__text-field" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+            <span class="form-edit-profile__input-error"></span>
           </label>
         </li>
         <li>
           <label for="form-edit-profile-about">
             <input type="text" name="about" id="form-edit-profile-about" class="form-edit-profile__text-field" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" required>
+            <span class="form-edit-profile__input-error"></span>
           </label>
         </li>
       </ul>
@@ -73,11 +75,13 @@
           <li>
             <label for="form-new-item-name">
               <input type="text" name="name" id="form-new-item-name" class="form-new-item__text-field" placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="form-new-item__input-error"></span>
             </label>
           </li>
           <li>
             <label for="form-new-item-image">
               <input type="url" name="image" id="form-new-item-image" class="form-new-item__text-field" placeholder="Ссылка на картинку" required>
+              <span class="form-new-item__input-error"></span>
             </label>
           </li>
         </ul>
