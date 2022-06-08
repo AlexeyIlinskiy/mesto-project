@@ -187,7 +187,7 @@ btnAddItem.addEventListener('click', function () {
 //Валидация форм
 
 // Добавляем класс с ошибкой
-const showInputError = (formElem, inputElem, errorMessage) => {
+function showInputError (formElem, inputElem, errorMessage) {
   const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
 
   inputElem.classList.add('form__input_type_error');
@@ -196,14 +196,14 @@ const showInputError = (formElem, inputElem, errorMessage) => {
 };
 
 //Удаляем класс с ошибкой
-const hideInputError = (formElem, inputElem) => {
+function hideInputError (formElem, inputElem) {
   const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
   inputElem.classList.remove('form__input_type_error');
   errorElem.classList.remove('form__input-error_active');
   errorElem.textContent = '';
 };
 
-const isValid = (formElem, inputElem) => {
+function isValid (formElem, inputElem) {
   if (!inputElem.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
     showInputError(formElem, inputElem, inputElem.validationMessage);
@@ -213,10 +213,10 @@ const isValid = (formElem, inputElem) => {
   }
 };
 
-const setEventListeners = (formElem) => {
+function setEventListeners (formElem) {
   const inputList = Array.from(formElem.querySelectorAll('.form__input'));
   const buttonElem = formElem.querySelector('.form__button');
-  
+  toggleButtonState(inputList, buttonElem);
 
   inputList.forEach((inputElem) => {
     inputElem.addEventListener('input', () => {
@@ -226,7 +226,7 @@ const setEventListeners = (formElem) => {
   });
 }; 
 
-const enableValidation = () => {
+function enableValidation () {
   const formList = Array.from(document.querySelectorAll('.form'));
 
   formList.forEach((formElem) => {
@@ -241,13 +241,13 @@ const enableValidation = () => {
 // Вызовем функцию
 enableValidation(); 
 
-const hasInvalidInput = (inputList) => {
+function hasInvalidInput (inputList) {
   return inputList.some((inputElem) => {
     return !inputElem.validity.valid;
   })
 }; 
 
-const toggleButtonState = (inputList, buttonElem) => {
+function toggleButtonState (inputList, buttonElem) {
   if (hasInvalidInput(inputList)) {
     buttonElem.classList.add('form__button_disabled');
   } else {
