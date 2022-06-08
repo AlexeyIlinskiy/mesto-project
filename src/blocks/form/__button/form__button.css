@@ -1,4 +1,4 @@
-.popup__button {
+.form__button {
   width: 100%;
   height: 50px;
   margin-top: 48px;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 879.98px) {
-  .popup__button {
+  .form__button {
     margin: 45px auto 0px;
     height: 46px;
     font-size: 14px;
@@ -23,6 +23,6 @@
   }
 }
 
-.popup__button:hover {
+.form__button:hover {
   opacity: 0.8;
 }

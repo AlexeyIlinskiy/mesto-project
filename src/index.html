@@ -39,26 +39,26 @@
 <!--Форма редактирования профиля-->
 <div class="popup" id="popup-edit-profile">
   <div class="popup__container">
-    <form method="get" name="form-edit-profile" id="form-edit-profile" class="popup__form" novalidate>
-      <button type="button" id="edit-profile__btn-close" class="popup__btn-close"></button>
-      <h2 class="popup__form-title">
+    <form method="get" name="form-edit-profile" id="form-edit-profile" class="form" novalidate>
+      <button type="button" id="form-edit-profile-btn-close" class="popup__btn-close"></button>
+      <h2 class="form__title">
         Редактировать профиль
       </h2>
-      <ul class="popup__inputs">
+      <ul class="form__inputs">
         <li>
-          <label for="form-edit-profile-name">
-            <input type="text" name="name" id="form-edit-profile-name" class="popup__input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
-            <span class="form-edit-profile__input-error"></span>
+          <label for="name-profile-input">
+            <input type="text" name="name" id="name-profile-input" class="form__input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+            <span class="name-profile-input-error form__input-error"></span>
           </label>
         </li>
         <li>
-          <label for="form-edit-profile-about">
-            <input type="text" name="about" id="form-edit-profile-about" class="popup__input" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" required>
-            <span class="form-edit-profile__input-error"></span>
+          <label for="about-profile-input">
+            <input type="text" name="about" id="about-profile-input" class="form__input" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" required>
+            <span class="about-profile-input-error form__input-error"></span>
           </label>
         </li>
       </ul>
-      <button type="submit" id="form-edit-profile__submit-btn" value="save" class="popup__button">Сохранить</button>
+      <button type="submit" id="form-edit-profile-btn-submit" value="save" class="form__button">Сохранить</button>
     </form>
   </div>
 </div>
@@ -66,26 +66,27 @@
   <!--Форма добавления карточки-->
   <div class="popup" id="popup-add-item">
     <div class="popup__container">
-      <form method="get" name="form-new-item" id="form-new-item" class="popup__form" novalidate>
-        <button type="button" id="add-item__btn-close" class="popup__btn-close"></button>
-        <h2 class="popup__form-title">
+      <form method="get" name="form-new-item" id="form-new-item" class="form" novalidate>
+        <button type="button" id="form-new-item-btn-close" class="popup__btn-close"></button>
+        <h2 class="form__title">
           Новое место
         </h2>
-        <ul class="popup__inputs">
+        <ul class="form__inputs">
           <li>
-            <label for="form-new-item-name">
-              <input type="text" name="name" id="form-new-item-name" class="popup__input" placeholder="Название" minlength="2" maxlength="30" required>
-              <span class="form-new-item__input-error"></span>
+            <label for="name-item-input">
+              <input type="text" name="placeName" id="name-item-input" class="form__input" placeholder="Название" minlength="2" maxlength="30" required>
+              <span class="name-item-input-error form__input-error"></span>
             </label>
           </li>
           <li>
-            <label for="form-new-item-image">
-              <input type="url" name="image" id="form-new-item-image" class="popup__input" placeholder="Ссылка на картинку" required>
-              <span class="form-new-item__input-error"></span>
+            <label for="url-item-input">
+              <input type="url" name="placeUrl" id="url-item-input" class="form__input" placeholder="Ссылка на картинку" required>
+              <span class="url-item-input-error form__input-error"></span>
             </label>
           </li>
-        </ul>
-        <button type="submit" id="form-new-item__submit-btn" value="save" class="popup__button">Создать</button>
+        </ul>  
+        <button type="submit" id="form-new-item-btn-submit" value="save" class="form__button">Создать</button>
+      
       </form>
     </div>
   </div>

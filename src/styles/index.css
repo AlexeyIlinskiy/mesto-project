@@ -33,19 +33,20 @@
 /*Модальные окна*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__form/popup__form.css);
-@import url(../blocks/popup/__form-title/popup__form-title.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__img-container/popup__img-container.css);
-@import url(../blocks/popup/__inputs/popup__inputs.css);
-@import url(../blocks/popup/__input/popup_input.css);
-@import url(../blocks/popup/__button/popup__button.css);
-@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
 @import url(../blocks/popup/__btn-close/popup__btn-close.css);
 
-/*Ошибки при валидации*/
-@import url(../blocks/popup/__error/popup__error.css);
-@import url(../blocks/popup/__input/_type/error/popup__input_type_error.css);
+/*Формы*/
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__inputs/form__inputs.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_type/error/form__input_type_error.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__button/_disabled/form__button_disabled.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/form/__input-error/active/form__input-error_active.css);
 
 
 /*Форма открытой картинки*/

@@ -18,7 +18,7 @@ const btnClosePopup = document.querySelectorAll('.popup__btn-close');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 
-//Закрытие по кнопке Esc
+//Закрытие по кнопке клавиатуры Esc
   document.addEventListener('keydown', function(evt) {
     if (evt.key === 'Escape' && popup.classList.contains('popup_opened')) {
       popup.classList.remove('popup_opened');
@@ -56,8 +56,8 @@ function closePopup(popup) {
 
 //Редактирование профиля
 const formElement = document.querySelector('#form-edit-profile');
-const nameInput = document.querySelector('#form-edit-profile-name');
-const jobInput = document.querySelector('#form-edit-profile-about');
+const nameInput = document.querySelector('#name-profile-input');
+const jobInput = document.querySelector('#about-profile-input');
 const nameUser = document.querySelector('.profile__name');
 const jobUser = document.querySelector('.profile__about');
 
@@ -159,8 +159,8 @@ initialCards.forEach(function(elem) {
 
 //Дадим пользователю добавить карточку
 const formImgNew = document.querySelector('#form-new-item');
-const itemLinkInput = document.querySelector('#form-new-item-image'); //Выберем поле ввода линка на картинку
-const itemTitleInput = document.querySelector('#form-new-item-name'); //Выберем поле ввода названия картинки
+const itemLinkInput = document.querySelector('#url-item-input'); //Выберем поле ввода линка на картинку
+const itemTitleInput = document.querySelector('#name-item-input'); //Выберем поле ввода названия картинки
 
 formImgNew.addEventListener('submit', function(evt) {
   evt.preventDefault();
@@ -184,3 +184,73 @@ btnAddItem.addEventListener('click', function () {
   openPopup(formAddItem)
 });
 
+//Валидация форм
+
+// Добавляем класс с ошибкой
+const showInputError = (formElem, inputElem, errorMessage) => {
+  const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
+
+  inputElem.classList.add('form__input_type_error');
+  errorElem.textContent = errorMessage;
+  errorElem.classList.add('form__input-error_active');
+};
+
+//Удаляем класс с ошибкой
+const hideInputError = (formElem, inputElem) => {
+  const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
+  inputElem.classList.remove('form__input_type_error');
+  errorElem.classList.remove('form__input-error_active');
+  errorElem.textContent = '';
+};
+
+const isValid = (formElem, inputElem) => {
+  if (!inputElem.validity.valid) {
+    // Если поле не проходит валидацию, покажем ошибку
+    showInputError(formElem, inputElem, inputElem.validationMessage);
+  } else {
+    // Если проходит, скроем
+    hideInputError(formElem, inputElem);
+  }
+};
+
+const setEventListeners = (formElem) => {
+  const inputList = Array.from(formElem.querySelectorAll('.form__input'));
+  const buttonElem = formElem.querySelector('.form__button');
+  
+
+  inputList.forEach((inputElem) => {
+    inputElem.addEventListener('input', () => {
+      isValid(formElem, inputElem);
+      toggleButtonState(inputList, buttonElem);
+    });
+  });
+}; 
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.form'));
+
+  formList.forEach((formElem) => {
+    formElem.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+
+    setEventListeners(formElem);
+  });
+};
+
+// Вызовем функцию
+enableValidation(); 
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElem) => {
+    return !inputElem.validity.valid;
+  })
+}; 
+
+const toggleButtonState = (inputList, buttonElem) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElem.classList.add('form__button_disabled');
+  } else {
+    buttonElem.classList.remove('form__button_disabled');
+  }
+}; 
