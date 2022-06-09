@@ -1,5 +1,5 @@
 //Подключим стили
-import './styles/index.css';
+import '../styles/index.css';
 
 //Подключим переменные
 import {
@@ -16,12 +16,12 @@ import {
   itemLinkInput,
   itemTitleInput,
   validParams
-} from './components/utils.js'
+} from './utils.js'
 
 //Подключим работу с модальными окнами
 import { 
   openPopup, 
-  closePopup } from './components/modal.js';
+  closePopup } from './modal.js';
 
 
 //Подключим работу с карточками
@@ -30,22 +30,23 @@ import {
   galleryItems,
   createCard,
   renderCard
-} from './components/card.js';
+} from './card.js';
 
 //Подлючим валидацию форм
 import {
   enableValidation,
-} from './components/validate.js';
+} from './validate.js';
 
 //Редактирование профиля
-function formSubmitHandler (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   nameUser.textContent = nameInput.value;
   jobUser.textContent = jobInput.value;
+  
   closePopup(formEditProfile);
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', handleProfileFormSubmit);
 
 //Выведем 6 карточек по умолчанию
 initialCards.forEach(function(elem) {
