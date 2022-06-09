@@ -1,16 +1,6 @@
 //Валидация форм
-// Создадим объект с классами и селекторами, как объект настроек
-// включение валидации вызовом enableValidation
-// все настройки передаются при вызове
-
-const validParams = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__button',
-  inactiveButtonClass: 'form__button_disabled',
-  inputErrorClass: 'form__input_type-error',
-  errorClass: 'form__input-error_active'
-};
+//Подключим параметры для валидации
+import { validParams } from "./utils";
 
 
 // Добавляем класс с ошибкой
@@ -65,9 +55,6 @@ function enableValidation (validParams) {
   });
 };
 
-// Вызовем функцию
-enableValidation(validParams); 
-
 function hasInvalidInput (inputList) {
   return inputList.some((inputElem) => {
     return !inputElem.validity.valid;
@@ -77,18 +64,19 @@ function hasInvalidInput (inputList) {
 function toggleButtonState (inputList, buttonElem, validParams) {
   if (hasInvalidInput(inputList)) {
     buttonElem.classList.add(validParams.inactiveButtonClass);
+    buttonElem.setAttribute('disabled', '');
   } else {
     buttonElem.classList.remove(validParams.inactiveButtonClass);
+    buttonElem.removeAttribute('disabled', '');
   }
-}; 
+};
 
 export {
-  validParams,
   showInputError,
   hideInputError,
   isValid,
   setEventListeners,
   enableValidation,
   hasInvalidInput,
-  toggleButtonState
+  toggleButtonState,
 };

@@ -21,6 +21,16 @@ const itemLinkInput = document.querySelector('#url-item-input'); //Выбере�
 const itemTitleInput = document.querySelector('#name-item-input'); //Выберем поле ввода названия картинки
 
 
+//Объект настроек c классами и селекторами для валидации
+const validParams = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_disabled',
+  inputErrorClass: 'form__input_type-error',
+  errorClass: 'form__input-error_active'
+};
+
 export {
   formEditProfile,
   formAddItem,
@@ -33,5 +43,6 @@ export {
   jobUser,
   formImgNew,
   itemLinkInput,
-  itemTitleInput
+  itemTitleInput,
+  validParams
 };

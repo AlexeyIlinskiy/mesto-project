@@ -14,7 +14,8 @@ import {
   jobUser,
   formImgNew,
   itemLinkInput,
-  itemTitleInput
+  itemTitleInput,
+  validParams
 } from './components/utils.js'
 
 //Подключим работу с модальными окнами
@@ -33,7 +34,6 @@ import {
 
 //Подлючим валидацию форм
 import {
-  validParams,
   enableValidation,
 } from './components/validate.js';
 
@@ -66,14 +66,14 @@ formImgNew.addEventListener('submit', function(evt) {
 btnEditProfile.addEventListener('click', function () {
   nameInput.value = nameUser.textContent.trim();
   jobInput.value = jobUser.textContent.trim();
-  openPopup(formEditProfile)
+  openPopup(formEditProfile);
 });
 
 //Открытие окна добавления карточки
 btnAddItem.addEventListener('click', function () {
   itemLinkInput.value = '';
   itemTitleInput.value = '';
-  openPopup(formAddItem)
+  openPopup(formAddItem);
 });
 
 enableValidation(validParams); 
