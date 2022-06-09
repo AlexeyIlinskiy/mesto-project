@@ -1,50 +1,12 @@
 import { openPopup } from "./modal";
 
-//Импортируем картинки, которые хранятся локально
-const arkhyz = new URL ('../images/arkhyz.jpg', import.meta.url);
-const chelyab = new URL ('../images/chelyabinsk-oblast.jpg', import.meta.url);
-const ivanovo = new URL ('../images/ivanovo.jpg', import.meta.url);
-const kamchatka = new URL ('../images/kamchatka.jpg', import.meta.url);
-const kholmogory = new URL ('../images/kholmogorsky-rayon.jpg', import.meta.url);
-const baikal = new URL ('../images/baikal.jpg', import.meta.url);
+import {
+  itemTemplate,
+  imgPopupOpen,
+  imgBigSize,
+  imgPopupCaption
+ } from "./utils";
 
-
-//Массив для добавления карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: arkhyz
-  },
-  {
-    name: 'Челябинская область',
-    link: chelyab
-  },
-  {
-    name: 'Иваново',
-    link: ivanovo
-  },
-  {
-    name: 'Камчатка',
-    link: kamchatka
-  },
-  {
-    name: 'Холмогорский район',
-    link: kholmogory
-  },
-  {
-    name: 'Байкал',
-    link: baikal
-  }
-];
-
-//Переменные для работы c карточками
-const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
-const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
-
-//Переменные для работы с большой картинкой
- const imgPopupOpen = document.querySelector('#popup-img');
- const imgBigSize = document.querySelector('.img-popup__img');
- const imgPopupCaption = document.querySelector('.img-popup__caption');
 
 //Создадим карточку
 function createCard (link, name) {  
@@ -83,12 +45,6 @@ function renderCard(card, container) {
 }
 
 export {
-  initialCards,
-  galleryItems,
-  itemTemplate,
-  imgPopupOpen,
-  imgBigSize,
-  imgPopupCaption,
   createCard,
   renderCard
 };

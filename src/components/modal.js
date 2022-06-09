@@ -1,48 +1,38 @@
-const btnClosePopup = document.querySelectorAll('.popup__btn-close');
+import { popups } from './utils.js';
 
 //Работаем с модальными окнами
 
-//Открытие окна
+//Открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+};
 
-//Закрытие по кнопке клавиатуры Esc
-  document.addEventListener('keydown', function(evt) {
-    if (evt.key === 'Escape') {
-      popup.classList.remove('popup_opened');
-    }
-  });
-  
-//Закрытие по клику
-  popup.addEventListener('click', function() {
-    if (popup.classList.contains('popup_opened')) {
-      popup.classList.remove('popup_opened');
-    }
-  });
-
-//Закрытие по крестику
-  btnClosePopup.forEach(function(btn) {
-    btn.addEventListener('click', function (evt) {
-      closePopup(evt.target.closest('.popup'));
-    });
-  });
-
-//Останавливаем всплытие, чтобы не закрывалось модальное окно
-  const popupsContainers = document.querySelectorAll('.popup__container');
-  popupsContainers.forEach(function(elem) {
-    elem.addEventListener('click', function(evt) {
-      evt.stopPropagation();
-    });
-  });
-
-}
-
-//Функция закрытия всех popup-окон
+//Функция закрытия всех попапов и удаление обработчика кнопки Esc
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-}
+  document.removeEventListener('keydown', closePopupEsc);
+};
+
+//Функция закрытия попапа по Esc
+
+function closePopupEsc (evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+};
+
+//Закроем попапы по крестику и по клику
+popups.forEach (function(popup) {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__btn-close')) {
+      closePopup(popup);
+    };
+  })
+});
 
 export {
-  btnClosePopup,
   openPopup,
-  closePopup,};
+  closePopup
+};

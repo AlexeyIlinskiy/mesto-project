@@ -3,6 +3,8 @@ import '../styles/index.css';
 
 //Подключим переменные
 import {
+  initialCards,
+  galleryItems,
   formEditProfile,
   formAddItem,
   btnEditProfile,
@@ -26,8 +28,6 @@ import {
 
 //Подключим работу с карточками
 import {
-  initialCards,
-  galleryItems,
   createCard,
   renderCard
 } from './card.js';
