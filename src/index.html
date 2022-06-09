@@ -44,20 +44,16 @@
       <h2 class="form__title">
         Редактировать профиль
       </h2>
-      <ul class="form__inputs">
-        <li>
-          <label for="name-profile-input">
-            <input type="text" name="name" id="name-profile-input" class="form__input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
-            <span class="name-profile-input-error form__input-error"></span>
-          </label>
-        </li>
-        <li>
-          <label for="about-profile-input">
-            <input type="text" name="about" id="about-profile-input" class="form__input" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" required>
-            <span class="about-profile-input-error form__input-error"></span>
-          </label>
-        </li>
-      </ul>
+      <fieldset class="form__inputs">
+        <label class="form__inputs-label" for="name-profile-input">
+          <input type="text" name="name" id="name-profile-input" class="form__input" placeholder="Ваше имя" minlength="2" maxlength="40" required>
+          <span class="name-profile-input-error form__input-error"></span>
+        </label>
+        <label class="form__inputs-label" for="about-profile-input">
+          <input type="text" name="about" id="about-profile-input" class="form__input" placeholder="Чем вы занимаетесь?" minlength="2" maxlength="200" required>
+          <span class="about-profile-input-error form__input-error"></span>
+        </label>
+      </fieldset>
       <button type="submit" id="form-edit-profile-btn-submit" value="save" class="form__button">Сохранить</button>
     </form>
   </div>
@@ -71,20 +67,16 @@
         <h2 class="form__title">
           Новое место
         </h2>
-        <ul class="form__inputs">
-          <li>
-            <label for="name-item-input">
-              <input type="text" name="placeName" id="name-item-input" class="form__input" placeholder="Название" minlength="2" maxlength="30" required>
-              <span class="name-item-input-error form__input-error"></span>
-            </label>
-          </li>
-          <li>
-            <label for="url-item-input">
-              <input type="url" name="placeUrl" id="url-item-input" class="form__input" placeholder="Ссылка на картинку" required>
-              <span class="url-item-input-error form__input-error"></span>
-            </label>
-          </li>
-        </ul>  
+        <fieldset class="form__inputs">
+          <label class="form__inputs-label" for="name-item-input">
+            <input type="text" name="placeName" id="name-item-input" class="form__input" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="name-item-input-error form__input-error"></span>
+          </label>
+          <label class="form__inputs-label" for="url-item-input">
+            <input type="url" name="placeUrl" id="url-item-input" class="form__input" placeholder="Ссылка на картинку" required>
+            <span class="url-item-input-error form__input-error"></span>
+          </label>
+        </fieldset>  
         <button type="submit" id="form-new-item-btn-submit" value="save" class="form__button">Создать</button>
       
       </form>
