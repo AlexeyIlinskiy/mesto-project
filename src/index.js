@@ -1,77 +1,43 @@
-import './styles/index.css'; // импорт главного файла стилей
+//Подключим стили
+import './styles/index.css';
 
+//Подключим переменные
+import {
+  formEditProfile,
+  formAddItem,
+  btnEditProfile,
+  btnAddItem,
+  formElement,
+  nameInput,
+  jobInput,
+  nameUser,
+  jobUser,
+  formImgNew,
+  itemLinkInput,
+  itemTitleInput
+} from './components/utils.js'
+
+//Подключим работу с модальными окнами
+import { 
+  openPopup, 
+  closePopup } from './components/modal.js';
+
+
+//Подключим работу с карточками
+import {
+  initialCards,
+  galleryItems,
+  createCard,
+  renderCard
+} from './components/card.js';
+
+//Подлючим валидацию форм
 import {
   validParams,
-  showInputError,
-  hideInputError,
-  isValid,
-  setEventListeners,
   enableValidation,
-  hasInvalidInput,
-  toggleButtonState
 } from './components/validate.js';
 
-//Формы
-const formEditProfile = document.querySelector('#popup-edit-profile'); 
-const formAddItem = document.querySelector('#popup-add-item');
-const imgPopupOpen = document.querySelector('#popup-img');
-
-
-//Кнопки
-const btnEditProfile = document.querySelector('.profile__edit-button');
-const btnAddItem = document.querySelector('.profile__add-button');
-const btnClosePopup = document.querySelectorAll('.popup__btn-close');
-
-
-//Работаем с модальными окнами
-
-//Открытие окна
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-
-//Закрытие по кнопке клавиатуры Esc
-  document.addEventListener('keydown', function(evt) {
-    if (evt.key === 'Escape' && popup.classList.contains('popup_opened')) {
-      popup.classList.remove('popup_opened');
-    }
-  });
-  
-//Закрытие по клику
-  popup.addEventListener('click', function() {
-    if (popup.classList.contains('popup_opened')) {
-      popup.classList.remove('popup_opened');
-    }
-  });
-
-//Закрытие по крестику
-  btnClosePopup.forEach(function(btn) {
-    btn.addEventListener('click', function (evt) {
-      closePopup(evt.target.closest('.popup'));
-    });
-  });
-
-//Останавливаем всплытие, чтобы не закрывалось модальное окно
-  const popupsContainers = document.querySelectorAll('.popup__container');
-  popupsContainers.forEach(function(elem) {
-    elem.addEventListener('click', function(evt) {
-      evt.stopPropagation();
-    });
-  });
-
-}
-
-//Функция закрытия всех popup-окон
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-} 
-
 //Редактирование профиля
-const formElement = document.querySelector('#form-edit-profile');
-const nameInput = document.querySelector('#name-profile-input');
-const jobInput = document.querySelector('#about-profile-input');
-const nameUser = document.querySelector('.profile__name');
-const jobUser = document.querySelector('.profile__about');
-
 function formSubmitHandler (evt) {
   evt.preventDefault();
   nameUser.textContent = nameInput.value;
@@ -81,87 +47,6 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-//Импортируем картинки, которые хранятся локально
-const arkhyz = new URL ('./images/arkhyz.jpg', import.meta.url);
-const chelyab = new URL ('./images/chelyabinsk-oblast.jpg', import.meta.url);
-const ivanovo = new URL ('./images/ivanovo.jpg', import.meta.url);
-const kamchatka = new URL ('./images/kamchatka.jpg', import.meta.url);
-const kholmogory = new URL ('./images/kholmogorsky-rayon.jpg', import.meta.url);
-const baikal = new URL ('./images/baikal.jpg', import.meta.url);
-
-
-//Массив для добавления карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: arkhyz
-  },
-  {
-    name: 'Челябинская область',
-    link: chelyab
-  },
-  {
-    name: 'Иваново',
-    link: ivanovo
-  },
-  {
-    name: 'Камчатка',
-    link: kamchatka
-  },
-  {
-    name: 'Холмогорский район',
-    link: kholmogory
-  },
-  {
-    name: 'Байкал',
-    link: baikal
-  }
-];
-
-//Переменные для работы c карточками
-const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
-const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
-
-//Переменные для работы с большой картинкой
- const imgBigSize = document.querySelector('.img-popup__img');
- const imgPopupCaption = document.querySelector('.img-popup__caption');
-
-//Создадим шаблон карточки
-function createCard (link, name) {  
-  const itemElement = itemTemplate.cloneNode(true);
-  const itemElementImg = itemElement.querySelector('.item__img'); //Выберем все картинки карточек
-  const itemElementName = itemElement.querySelector('.item__title'); //Выберем названия карточек
-
-  itemElementImg.src = link;
-  itemElementName.textContent = name;
-  itemElementImg.alt = name;
-  
-  const btnLike = itemElement.querySelector('.item__btn-like');
-  btnLike.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('item__btn-like_active');
-  });
- 
-  const btnDelete = itemElement.querySelector('.item__btn-delete');
-  btnDelete.addEventListener('click', function (evt) {
-    evt.target.closest('.item').remove(itemElement);
-  });
-
-//Открытие картинки в полный размер
-itemElementImg.addEventListener('click',  function () {
-    imgBigSize.src = link;
-    imgBigSize.alt = name;
-    imgPopupCaption.textContent = name;
-    openPopup(imgPopupOpen);  
-  });
-
-  return itemElement;
-}
-
-//Функция, которая будет рендерить вставлять карточки в указанный нами контейнер
-function renderCard(card, container) {
-  container.prepend(card);
-}
-
 //Выведем 6 карточек по умолчанию
 initialCards.forEach(function(elem) {
   const card = createCard(elem.link, elem.name);
@@ -169,10 +54,6 @@ initialCards.forEach(function(elem) {
 });
 
 //Дадим пользователю добавить карточку
-const formImgNew = document.querySelector('#form-new-item');
-const itemLinkInput = document.querySelector('#url-item-input'); //Выберем поле ввода линка на картинку
-const itemTitleInput = document.querySelector('#name-item-input'); //Выберем поле ввода названия картинки
-
 formImgNew.addEventListener('submit', function(evt) {
   evt.preventDefault();
 
@@ -194,7 +75,6 @@ btnAddItem.addEventListener('click', function () {
   itemTitleInput.value = '';
   openPopup(formAddItem)
 });
-
 
 enableValidation(validParams); 
 
