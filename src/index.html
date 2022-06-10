@@ -12,7 +12,12 @@
   </header>
   <main class="main">
     <section class="profile">
-      <img src="<%=require('./images/Avatar.jpg')%>" alt="Фото профиля" class="profile__avatar">
+      <div class="profile__avatar-container">
+      <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Фото профиля">
+      <div class="profile__avatar-overlay">
+        <img src="<%=require('./images/cursor-edit-profile.svg')%>" alt="Редактировать профиль" class="profile__avatar-edit-icon">
+      </div>
+      </div>
       <div class="profile__info">
         <h1 class="profile__name">
           Жак-Ив Кусто
