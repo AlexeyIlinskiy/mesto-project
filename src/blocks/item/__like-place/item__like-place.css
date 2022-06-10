@@ -1,0 +1,9 @@
+.item__like-place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  row-gap: 5px;
+  margin: 0;
+  padding: 0;
+}
