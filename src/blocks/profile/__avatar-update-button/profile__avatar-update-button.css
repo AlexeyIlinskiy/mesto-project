@@ -1,0 +1,13 @@
+.profile__avatar-update-button {
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  background-image: url(../../../images/Avatar-update-button.svg);
+  border: 0;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  position: absolute;
+  margin: 47px;
+  padding: 0;
+  cursor: pointer;
+}

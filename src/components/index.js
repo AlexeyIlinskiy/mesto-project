@@ -5,19 +5,24 @@ import '../styles/index.css';
 import {
   initialCards,
   galleryItems,
-  formEditProfile,
-  formAddItem,
+  popupEditProfile,
+  popupUpdateAvatar,
+  popupAddItem,
   btnEditProfile,
+  btnUpdateAvatar,
   btnAddItem,
-  formElement,
+  formEditProfile,
   nameInput,
   jobInput,
   nameUser,
   jobUser,
+  formUpdateAvatar,
+  urlAvatarInput,
+  urlAvatarUser,
   formImgNew,
   itemLinkInput,
   itemTitleInput,
-  validParams
+  validParams,
 } from './utils.js'
 
 //Подключим работу с модальными окнами
@@ -43,10 +48,20 @@ function handleProfileFormSubmit (evt) {
   nameUser.textContent = nameInput.value;
   jobUser.textContent = jobInput.value;
   
-  closePopup(formEditProfile);
+  closePopup(popupEditProfile);
 }
 
-formElement.addEventListener('submit', handleProfileFormSubmit);
+formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+
+//Обновление аватара
+function handleUpdateAvatar (evt) {
+  evt.preventDefault();
+  
+  urlAvatarUser.src = urlAvatarInput.value;
+  closePopup(popupUpdateAvatar);
+};
+
+formUpdateAvatar.addEventListener('submit', handleUpdateAvatar);
 
 //Выведем 6 карточек по умолчанию
 initialCards.forEach(function(elem) {
@@ -60,21 +75,27 @@ formImgNew.addEventListener('submit', function(evt) {
 
   const card = createCard(itemLinkInput.value, itemTitleInput.value);
   renderCard(card, galleryItems);
-  closePopup(formAddItem);
+  closePopup(popupAddItem);
 });
 
 //Открытие окна редактирования профиля
 btnEditProfile.addEventListener('click', function () {
   nameInput.value = nameUser.textContent.trim();
   jobInput.value = jobUser.textContent.trim();
-  openPopup(formEditProfile);
+  openPopup(popupEditProfile);
+});
+
+//Открытие окна обновления аватара
+btnUpdateAvatar.addEventListener('click', function () {
+  urlAvatarInput.value = urlAvatarUser.src.trim();
+  openPopup(popupUpdateAvatar);
 });
 
 //Открытие окна добавления карточки
 btnAddItem.addEventListener('click', function () {
   itemLinkInput.value = '';
   itemTitleInput.value = '';
-  openPopup(formAddItem);
+  openPopup(popupAddItem);
 });
 
 enableValidation(validParams); 

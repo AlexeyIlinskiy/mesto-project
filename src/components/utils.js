@@ -51,20 +51,28 @@ const itemTemplate = document.querySelector('#item-template').content; //Выб�
  const imgBigSize = document.querySelector('.img-popup__img');
  const imgPopupCaption = document.querySelector('.img-popup__caption');
 
-//Формы
-const formEditProfile = document.querySelector('#popup-edit-profile'); 
-const formAddItem = document.querySelector('#popup-add-item');
+//Попапы
+const popupEditProfile = document.querySelector('#popup-edit-profile'); 
+const popupAddItem = document.querySelector('#popup-add-item');
+const popupUpdateAvatar = document.querySelector('#popup-update-avatar');
 
 //Кнопки
 const btnEditProfile = document.querySelector('.profile__edit-button');
 const btnAddItem = document.querySelector('.profile__add-button');
+const btnUpdateAvatar = document.querySelector('.profile__avatar-update-button');
 
 //Редактирование профиля
-const formElement = document.querySelector('#form-edit-profile');
+const formEditProfile = document.querySelector('#form-edit-profile');
 const nameInput = document.querySelector('#name-profile-input');
 const jobInput = document.querySelector('#about-profile-input');
 const nameUser = document.querySelector('.profile__name');
 const jobUser = document.querySelector('.profile__about');
+
+
+//Обновление аватара
+const formUpdateAvatar = document.querySelector('#form-update-avatar');
+const urlAvatarInput = document.querySelector('#url-avatar-input');
+const urlAvatarUser = document.querySelector('.profile__avatar');
 
 //Добавление карточки пользователем
 const formImgNew = document.querySelector('#form-new-item');
@@ -90,15 +98,20 @@ export {
   imgPopupOpen,
   imgBigSize,
   imgPopupCaption,
-  formEditProfile,
-  formAddItem,
+  popupEditProfile,
+  popupUpdateAvatar,
+  popupAddItem,
   btnEditProfile,
+  btnUpdateAvatar,
   btnAddItem,
-  formElement,
+  formEditProfile,
   nameInput,
   jobInput,
   nameUser,
   jobUser,
+  formUpdateAvatar,
+  urlAvatarInput,
+  urlAvatarUser,
   formImgNew,
   itemLinkInput,
   itemTitleInput,
