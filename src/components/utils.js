@@ -78,7 +78,7 @@ const urlAvatarUser = document.querySelector('.profile__avatar');
 const formImgNew = document.querySelector('#form-new-item');
 const itemLinkInput = document.querySelector('#url-item-input'); //Выберем поле ввода линка на картинку
 const itemTitleInput = document.querySelector('#name-item-input'); //Выберем поле ввода названия картинки
-
+const btnImgNewSubmit = formImgNew.querySelector('.form__button');
 
 //Объект настроек c классами и селекторами для валидации
 const validParams = {
@@ -113,6 +113,7 @@ export {
   urlAvatarInput,
   urlAvatarUser,
   formImgNew,
+  btnImgNewSubmit,
   itemLinkInput,
   itemTitleInput,
   validParams

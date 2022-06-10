@@ -20,6 +20,7 @@ import {
   urlAvatarInput,
   urlAvatarUser,
   formImgNew,
+  btnImgNewSubmit,
   itemLinkInput,
   itemTitleInput,
   validParams,
@@ -75,6 +76,11 @@ formImgNew.addEventListener('submit', function(evt) {
 
   const card = createCard(itemLinkInput.value, itemTitleInput.value);
   renderCard(card, galleryItems);
+
+  btnImgNewSubmit.classList.add(validParams.inactiveButtonClass);
+  btnImgNewSubmit.setAttribute('disabled', '');
+  formImgNew.reset();
+  
   closePopup(popupAddItem);
 });
 
@@ -93,8 +99,6 @@ btnUpdateAvatar.addEventListener('click', function () {
 
 //Открытие окна добавления карточки
 btnAddItem.addEventListener('click', function () {
-  itemLinkInput.value = '';
-  itemTitleInput.value = '';
   openPopup(popupAddItem);
 });
 
