@@ -26,7 +26,8 @@ import {
 } from './utils.js';
 
 import {
-  getInitialCards
+  getInitialCards,
+  getUser
 } from './api.js';
 
 //Подключим работу с модальными окнами
@@ -56,7 +57,18 @@ function handleProfileFormSubmit (evt) {
   closePopup(popupEditProfile);
 }
 
-formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+ formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+
+//Получение данных для профиля с сервера
+getUser()
+  .then((result) => {
+    nameUser.textContent = result.name;
+    jobUser.textContent = result.about;
+    urlAvatarUser.src = result.avatar;
+    })
+  .catch((err) => {
+    console.log(err);
+  });
 
 //Обновление аватара
 function handleUpdateAvatar (evt) {
