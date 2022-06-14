@@ -1,12 +1,11 @@
-import { openPopup } from "./modal";
+import { openPopup } from "./modal.js";
 
 import {
   itemTemplate,
   imgPopupOpen,
   imgBigSize,
   imgPopupCaption
- } from "./utils";
-
+ } from "./utils.js";
 
 //Создадим карточку
 function createCard (link, name) {  
