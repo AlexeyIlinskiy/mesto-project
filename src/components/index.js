@@ -43,6 +43,7 @@ import {
   enableValidation,
 } from './validate.js';
 
+
 //Редактирование профиля
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
@@ -102,6 +103,4 @@ btnAddItem.addEventListener('click', function () {
   openPopup(popupAddItem);
 });
 
-enableValidation(validParams); 
-
-
+enableValidation(validParams);
