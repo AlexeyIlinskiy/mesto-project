@@ -60,15 +60,15 @@ function handleProfileFormSubmit (evt) {
  formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
 //Получение данных для профиля с сервера
-getUser()
-  .then((result) => {
-    nameUser.textContent = result.name;
-    jobUser.textContent = result.about;
-    urlAvatarUser.src = result.avatar;
-    })
-  .catch((err) => {
-    console.log(err);
-  });
+// getUser()
+//   .then((result) => {
+//     nameUser.textContent = result.name;
+//     jobUser.textContent = result.about;
+//     urlAvatarUser.src = result.avatar;
+//     })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 //Обновление аватара
 function handleUpdateAvatar (evt) {
@@ -125,3 +125,4 @@ btnAddItem.addEventListener('click', function () {
 });
 
 enableValidation(validParams);
+getUser();
