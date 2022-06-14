@@ -27,7 +27,8 @@ import {
 
 import {
   getInitialCards,
-  getUser
+  getUser,
+  editUser
 } from './api.js';
 
 //Подключим работу с модальными окнами
@@ -48,27 +49,34 @@ import {
 } from './validate.js';
 
 
+//Открытие окна редактирования профиля
+btnEditProfile.addEventListener('click', function () {
+  nameInput.value = nameUser.textContent.trim();
+  jobInput.value = jobUser.textContent.trim();
+  openPopup(popupEditProfile);
+});
+
+
 //Редактирование профиля
 function handleProfileFormSubmit (evt) {
   evt.preventDefault();
   nameUser.textContent = nameInput.value;
   jobUser.textContent = jobInput.value;
   
+  editUser(nameUser.textContent, jobUser.textContent);
+  
   closePopup(popupEditProfile);
 }
 
  formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
-//Получение данных для профиля с сервера
-// getUser()
-//   .then((result) => {
-//     nameUser.textContent = result.name;
-//     jobUser.textContent = result.about;
-//     urlAvatarUser.src = result.avatar;
-//     })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+
+
+//Открытие окна обновления аватара
+btnUpdateAvatar.addEventListener('click', function () {
+  urlAvatarInput.value = urlAvatarUser.src.trim();
+  openPopup(popupUpdateAvatar);
+});
 
 //Обновление аватара
 function handleUpdateAvatar (evt) {
@@ -106,18 +114,6 @@ formImgNew.addEventListener('submit', function(evt) {
   closePopup(popupAddItem);
 });
 
-//Открытие окна редактирования профиля
-btnEditProfile.addEventListener('click', function () {
-  nameInput.value = nameUser.textContent.trim();
-  jobInput.value = jobUser.textContent.trim();
-  openPopup(popupEditProfile);
-});
-
-//Открытие окна обновления аватара
-btnUpdateAvatar.addEventListener('click', function () {
-  urlAvatarInput.value = urlAvatarUser.src.trim();
-  openPopup(popupUpdateAvatar);
-});
 
 //Открытие окна добавления карточки
 btnAddItem.addEventListener('click', function () {
@@ -126,3 +122,4 @@ btnAddItem.addEventListener('click', function () {
 
 enableValidation(validParams);
 getUser();
+

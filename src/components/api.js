@@ -1,9 +1,16 @@
 import {
   nameUser,
   jobUser,
-  urlAvatarUser
+  urlAvatarUser,
+  formEditProfile,
+  nameInput,
+  jobInput,
+  popupEditProfile
 } from './utils.js';
 
+import {
+  closePopup
+} from './modal.js';
 
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11/',
@@ -41,10 +48,32 @@ function getUser() {
     .catch((err) => {
       console.log(err);
     });
+};
+
+//Функция редактирования профиля
+function editUser(nameUser, jobUser) {
+  return fetch ('https://nomoreparties.co/v1/plus-cohort-11/users/me', {
+      method: 'PATCH', 
+      headers: {
+        authorization: 'f08a7d2d-99b7-4264-bc75-9c8d3d90332f',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify ({
+        name: nameUser,
+        about: jobUser
+      })
+    })
+    .then (res => {
+      if (res.ok) {
+        return res.json();
+      }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
 }
 
 
 export {
   getInitialCards,
-  getUser
+  getUser,
+  editUser
 };
