@@ -28,7 +28,8 @@ import {
 import {
   getInitialCards,
   getUser,
-  editUser
+  editUser,
+  editAvatar
 } from './api.js';
 
 //Подключим работу с модальными окнами
@@ -70,8 +71,6 @@ function handleProfileFormSubmit (evt) {
 
  formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
-
-
 //Открытие окна обновления аватара
 btnUpdateAvatar.addEventListener('click', function () {
   urlAvatarInput.value = urlAvatarUser.src.trim();
@@ -83,6 +82,8 @@ function handleUpdateAvatar (evt) {
   evt.preventDefault();
   
   urlAvatarUser.src = urlAvatarInput.value;
+
+  editAvatar(urlAvatarUser.src);
   closePopup(popupUpdateAvatar);
 };
 

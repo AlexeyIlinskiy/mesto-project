@@ -2,15 +2,7 @@ import {
   nameUser,
   jobUser,
   urlAvatarUser,
-  formEditProfile,
-  nameInput,
-  jobInput,
-  popupEditProfile
 } from './utils.js';
-
-import {
-  closePopup
-} from './modal.js';
 
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11/',
@@ -33,7 +25,10 @@ function getInitialCards() {
 
 //Функция получения информации о пользователе с сервера
 function getUser() {
-  return fetch (`${config.baseUrl}/users/me`, {headers: config.headers})
+  return fetch (
+    `${config.baseUrl}/users/me`, {
+      headers: config.headers
+    })
     .then (res => {
       if (res.ok) {
         return res.json();
@@ -52,12 +47,9 @@ function getUser() {
 
 //Функция редактирования профиля
 function editUser(nameUser, jobUser) {
-  return fetch ('https://nomoreparties.co/v1/plus-cohort-11/users/me', {
+  return fetch (`${config.baseUrl}/users/me`, {
       method: 'PATCH', 
-      headers: {
-        authorization: 'f08a7d2d-99b7-4264-bc75-9c8d3d90332f',
-        'Content-Type': 'application/json'
-      },
+      headers: config.headers,
       body: JSON.stringify ({
         name: nameUser,
         about: jobUser
@@ -69,11 +61,29 @@ function editUser(nameUser, jobUser) {
       }
         return Promise.reject(`Ошибка: ${res.status}`);
     })
-}
+};
+
+//Функция редактирования аватара
+function editAvatar(avatar) {
+  return fetch (`${config.baseUrl}/users/me/avatar`, {
+      method: 'PATCH', 
+      headers: config.headers,
+      body: JSON.stringify ({
+        avatar: avatar
+      })
+    })
+    .then (res => {
+      if (res.ok) {
+        return res.json();
+      }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
+};
 
 
 export {
   getInitialCards,
   getUser,
-  editUser
+  editUser,
+  editAvatar
 };
