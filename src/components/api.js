@@ -1,12 +1,15 @@
 import {
   nameUser,
   jobUser,
-  urlAvatarUser
+  urlAvatarUser,
+  btnEditProfileSubmit,
+  btnUpdateAvatarSubmit,
+  btnImgNewSubmit
 } from './utils.js';
 
-import {
-  initialCards
-} from './card.js';
+import { initialCards } from './card.js';
+
+import { renderLoading } from './index.js';
 
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11/',
@@ -74,9 +77,12 @@ function editUser(nameUser, jobUser) {
       }
         return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .then(() => {
+      renderLoading(false, btnEditProfileSubmit, 'Сохранить');
+    })
     .catch((err) => {
       console.log(err);
-    });
+    })
 };
 
 //Функция редактирования аватара
@@ -94,9 +100,12 @@ function editAvatar(avatar) {
       }
         return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .then(() => {
+      renderLoading(false, btnUpdateAvatarSubmit, 'Сохранить');
+    })
     .catch((err) => {
       console.log(err);
-    });
+    })
 };
 
 //Функция добавления новой карточки
@@ -115,9 +124,12 @@ function apiAddNewCard(name, link) {
       }
         return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .then(() => {
+      renderLoading(false, btnImgNewSubmit, 'Создать');
+    })
     .catch((err) => {
       console.log(err);
-    });
+    })
 };
 
 //Функция лайков у карточки:
@@ -174,7 +186,6 @@ function deleteCard(idCard) {
       console.log(err);
     });
   };
-
 
 export {
   getInitialCards,

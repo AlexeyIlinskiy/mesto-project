@@ -19,13 +19,13 @@ function createCard (link, name, cardId, likes, ownerId) {
   const itemElement = itemTemplate.cloneNode(true);
   const itemElementImg = itemElement.querySelector('.item__img'); //Выберем все картинки карточек
   const itemElementName = itemElement.querySelector('.item__title'); //Выберем названия карточек
-
+  const likeCount = itemElement.querySelector('.item__like-count');
+  
   itemElementImg.src = link;
   itemElementName.textContent = name;
   itemElementImg.alt = name;
   itemElementImg.id = cardId;
-
-  const likeCount = itemElement.querySelector('.item__like-count');
+  likeCount.textContent = likes;
 
   const btnLike = itemElement.querySelector('.item__btn-like');
 
@@ -38,8 +38,7 @@ function createCard (link, name, cardId, likes, ownerId) {
       dislikeCard(cardId,likeCount);
     } 
   });
- 
-  likeCount.textContent = likes;
+  
   
   const ownerCard = ownerId;
   if (ownerCard === '73418e87cd03bd75259347fb') {
@@ -50,6 +49,7 @@ function createCard (link, name, cardId, likes, ownerId) {
     deleteCard(cardId);
   });
 };
+
 //Открытие картинки в полный размер
 itemElementImg.addEventListener('click',  function () {
     imgBigSize.src = link;
@@ -59,7 +59,7 @@ itemElementImg.addEventListener('click',  function () {
   });
 
   return itemElement;
-}
+};
 
 //Функция, которая вставлять карточки в указанный нами контейнер
 function renderCard(card, container) {

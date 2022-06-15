@@ -31,12 +31,14 @@ const nameInput = document.querySelector('#name-profile-input');
 const jobInput = document.querySelector('#about-profile-input');
 const nameUser = document.querySelector('.profile__name');
 const jobUser = document.querySelector('.profile__about');
+const btnEditProfileSubmit = formEditProfile.querySelector('#form-edit-profile-btn-submit');
 
 
 //Обновление аватара
 const formUpdateAvatar = document.querySelector('#form-update-avatar');
 const urlAvatarInput = document.querySelector('#url-avatar-input');
 const urlAvatarUser = document.querySelector('.profile__avatar');
+const btnUpdateAvatarSubmit = formUpdateAvatar.querySelector('#form-update-avatar-btn-submit');
 
 //Добавление карточки пользователем
 const formImgNew = document.querySelector('#form-new-item');
@@ -70,11 +72,13 @@ export {
   formEditProfile,
   nameInput,
   jobInput,
+  btnEditProfileSubmit,
   nameUser,
   jobUser,
   formUpdateAvatar,
   urlAvatarInput,
   urlAvatarUser,
+  btnUpdateAvatarSubmit,
   formImgNew,
   btnImgNewSubmit,
   itemLinkInput,

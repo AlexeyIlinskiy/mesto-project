@@ -23,6 +23,7 @@ import {
   itemLinkInput,
   itemTitleInput,
   validParams,
+  
 } from './utils.js';
 
 import {
@@ -105,7 +106,6 @@ formImgNew.addEventListener('submit', function(evt) {
 
   btnImgNewSubmit.setAttribute('disabled', '');
   formImgNew.reset();
-  
   closePopup(popupAddItem);
 });
 
@@ -114,6 +114,16 @@ formImgNew.addEventListener('submit', function(evt) {
 btnAddItem.addEventListener('click', function () {
   openPopup(popupAddItem);
 });
+
+//Изменение надписи на кнопке в момент загрузки
+export function renderLoading(isLoading, button, defaultText) {
+  if (isLoading) {
+    button.textContent = 'Сохранение...';
+  } else {
+    button.textContent = defaultText;
+  }
+};
+
 
 enableValidation(validParams);
 getInitialCards();
