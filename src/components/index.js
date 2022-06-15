@@ -29,7 +29,8 @@ import {
   getInitialCards,
   getUser,
   editUser,
-  editAvatar
+  editAvatar,
+  apiAddNewCard
 } from './api.js';
 
 //Подключим работу с модальными окнами
@@ -107,8 +108,10 @@ formImgNew.addEventListener('submit', function(evt) {
 
   const card = createCard(itemLinkInput.value, itemTitleInput.value);
   renderCard(card, galleryItems);
-
+  apiAddNewCard (itemTitleInput.value, itemLinkInput.value);
+  
   btnImgNewSubmit.classList.add(validParams.inactiveButtonClass);
+
   btnImgNewSubmit.setAttribute('disabled', '');
   formImgNew.reset();
   

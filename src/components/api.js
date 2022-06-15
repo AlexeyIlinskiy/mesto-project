@@ -61,6 +61,9 @@ function editUser(nameUser, jobUser) {
       }
         return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 //Функция редактирования аватара
@@ -78,6 +81,30 @@ function editAvatar(avatar) {
       }
         return Promise.reject(`Ошибка: ${res.status}`);
     })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+//Функция добавления новой карточки
+function apiAddNewCard(name, link) {
+  return fetch (`${config.baseUrl}/cards`, {
+      method: 'POST', 
+      headers: config.headers,
+      body: JSON.stringify ({
+        name: name,
+        link: link
+      })
+    })
+    .then (res => {
+      if (res.ok) {
+        return res.json();
+      }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 
@@ -85,5 +112,6 @@ export {
   getInitialCards,
   getUser,
   editUser,
-  editAvatar
+  editAvatar,
+  apiAddNewCard
 };
