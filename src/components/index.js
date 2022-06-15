@@ -90,17 +90,8 @@ function handleUpdateAvatar (evt) {
 
 formUpdateAvatar.addEventListener('submit', handleUpdateAvatar);
 
-//Выведем карточки по умолчанию
-getInitialCards()
-  .then((result) => {
-    result.forEach(function(elem) {
-      const card = createCard(elem.link, elem.name);
-      renderCard(card, galleryItems);
-    })
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+
+
 
 //Дадим пользователю добавить карточку
 formImgNew.addEventListener('submit', function(evt) {
@@ -125,5 +116,6 @@ btnAddItem.addEventListener('click', function () {
 });
 
 enableValidation(validParams);
+getInitialCards();
 getUser();
 

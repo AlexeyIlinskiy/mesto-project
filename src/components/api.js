@@ -1,8 +1,12 @@
 import {
   nameUser,
   jobUser,
-  urlAvatarUser,
+  urlAvatarUser
 } from './utils.js';
+
+import {
+  initialCards
+} from './card.js';
 
 const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11/',
@@ -12,14 +16,23 @@ const config = {
   }
 }
 
-//Функция получения карточек с сервера, которые загрузятся по умолчанию
+//Функция получения карточек с сервера
 function getInitialCards() {
-  return fetch (`${config.baseUrl}/cards`, {headers: config.headers})
+  return fetch (
+    `${config.baseUrl}/cards`, {
+    headers: config.headers
+  })
     .then (res => {
       if (res.ok) {
         return res.json();
       }
       return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then((result) => {
+      initialCards(result);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
 
@@ -107,11 +120,51 @@ function apiAddNewCard(name, link) {
     });
 };
 
+//Функция лайков у карточки:
+function likeCard(idCard, likeCount) {
+  return fetch (`${config.baseUrl}/cards/likes/${idCard}`, {
+      method: 'PUT', 
+      headers: config.headers,
+    })
+    .then (res => {
+      if (res.ok) {
+        return res.json();
+      }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then ((res) => {
+      likeCount.textContent = res.likes.length;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+function dislikeCard(idCard, likeCount) {
+  return fetch (`${config.baseUrl}/cards/likes/${idCard}`, {
+      method: 'DELETE', 
+      headers: config.headers,
+    })
+    .then (res => {
+      if (res.ok) {
+        return res.json();
+      }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .then ((res) => {
+      likeCount.textContent = res.likes.length;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 export {
   getInitialCards,
   getUser,
   editUser,
   editAvatar,
-  apiAddNewCard
+  apiAddNewCard,
+  likeCard,
+  dislikeCard
 };
