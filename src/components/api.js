@@ -159,6 +159,23 @@ function dislikeCard(idCard, likeCount) {
     });
 };
 
+function deleteCard(idCard) {
+  return fetch (`${config.baseUrl}/cards/${idCard}`, {
+      method: 'DELETE', 
+      headers: config.headers,
+    })
+    .then (res => {
+      if (res.ok) {
+        return res.json();
+      }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
+
 export {
   getInitialCards,
   getUser,
@@ -166,5 +183,6 @@ export {
   editAvatar,
   apiAddNewCard,
   likeCard,
-  dislikeCard
+  dislikeCard,
+  deleteCard
 };

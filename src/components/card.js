@@ -9,8 +9,9 @@ import {
  } from "./utils.js";
 
  import {
+   likeCard,
    dislikeCard,
-   likeCard
+   deleteCard
  } from './api.js';
 
 //Создадим карточку
@@ -35,17 +36,20 @@ function createCard (link, name, cardId, likes, ownerId) {
     } else {
       evt.target.classList.remove('item__btn-like_active');
       dislikeCard(cardId,likeCount);
-    }
-    
+    } 
   });
  
   likeCount.textContent = likes;
   
-  const btnDelete = itemElement.querySelector('.item__btn-delete');
-  btnDelete.addEventListener('click', function (evt) {
+  const ownerCard = ownerId;
+  if (ownerCard === '73418e87cd03bd75259347fb') {
+    const btnDelete = itemElement.querySelector('.item__btn-delete');
+    btnDelete.style.display = 'block';
+    btnDelete.addEventListener('click', function (evt) {
     evt.target.closest('.item').remove(itemElement);
+    deleteCard(cardId);
   });
-
+};
 //Открытие картинки в полный размер
 itemElementImg.addEventListener('click',  function () {
     imgBigSize.src = link;
