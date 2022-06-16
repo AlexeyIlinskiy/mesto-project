@@ -3,12 +3,11 @@
 //Соберём все попапы
 const popups = document.querySelectorAll('.popup');
 
-
 //Всё для работы с карточками
 
 //Переменные для работы c карточками
+const itemTemplate = document.querySelector('#item-template').content;
 const galleryItems = document.querySelector('.gallery__items'); //Выберем контейнер с размещениями всех карточек
-const itemTemplate = document.querySelector('#item-template').content; //Выберем содержимое шаблона добавления картинки для клонирования
 
 //Переменные для работы с большой картинкой
  const imgPopupOpen = document.querySelector('#popup-img');
@@ -58,8 +57,8 @@ const validParams = {
 
 export {
   popups,
-  galleryItems,
   itemTemplate,
+  galleryItems,
   imgPopupOpen,
   imgBigSize,
   imgPopupCaption,
