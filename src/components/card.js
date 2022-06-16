@@ -60,12 +60,14 @@ function createCard (link, name, cardId, ownerId, cardLikes) {
 
     btnDelete.style.display = 'block';
     btnDelete.addEventListener('click', function (evt) {
-    evt.target.closest('.item').remove(itemElement);
 
     deleteCard(cardId)
+      .then (() => {
+        evt.target.closest('.item').remove(itemElement);
+      })
       .catch((err) => {
         console.log(err);
-      });
+      })
     });
   };
 
