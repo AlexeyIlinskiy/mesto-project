@@ -67,7 +67,8 @@ Promise.all([getUser(), getInitialCards()])
   editUser(nameUser.textContent, jobUser.textContent)
     .then(() => {
       nameUser.textContent = nameInput.value;
-      jobUser.textContent = jobInput.value;  
+      jobUser.textContent = jobInput.value; 
+      closePopup(popupEditProfile); 
     })
     .catch((err) => {
       console.log(err);
@@ -75,8 +76,6 @@ Promise.all([getUser(), getInitialCards()])
     .finally(() => {
       renderLoading(false, btnEditProfileSubmit, 'Сохранить');
   })
-  
-  closePopup(popupEditProfile);
 };
 
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
@@ -88,7 +87,8 @@ function handleUpdateAvatar (evt) {
   
   editAvatar(urlAvatarUser.src)
     .then(() => {
-      urlAvatarUser.src = urlAvatarInput.value;  
+      urlAvatarUser.src = urlAvatarInput.value;
+      closePopup(popupUpdateAvatar); 
     })
     .catch((err) => {
       console.log(err);
@@ -96,7 +96,6 @@ function handleUpdateAvatar (evt) {
     .finally(() => {
       renderLoading(false, btnUpdateAvatarSubmit, 'Сохранить');
     })
-  closePopup(popupUpdateAvatar);
 };
 
 formUpdateAvatar.addEventListener('submit', handleUpdateAvatar);
