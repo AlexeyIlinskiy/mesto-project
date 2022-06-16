@@ -64,7 +64,7 @@ Promise.all([getUser(), getInitialCards()])
   renderLoading(true, btnEditProfileSubmit, 'Сохранение...');
   evt.preventDefault();
   
-  editUser(nameUser.textContent, jobUser.textContent)
+  editUser(nameInput.value, jobInput.value)
     .then(() => {
       nameUser.textContent = nameInput.value;
       jobUser.textContent = jobInput.value; 
@@ -85,7 +85,7 @@ function handleUpdateAvatar (evt) {
   renderLoading(true, btnUpdateAvatarSubmit, 'Сохранение...');
   evt.preventDefault();
   
-  editAvatar(urlAvatarUser.src)
+  editAvatar(urlAvatarInput.value)
     .then(() => {
       urlAvatarUser.src = urlAvatarInput.value;
       closePopup(popupUpdateAvatar); 
