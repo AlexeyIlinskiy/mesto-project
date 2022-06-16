@@ -1,6 +1,6 @@
 import { addLikeCard, removeLikeCard, deleteCard } from './api.js';
 import { userId } from './index.js';
-import { imgPopupOpen, imgBigSize, imgPopupCaption, itemTemplate, galleryItems } from "./utils.js";
+import { imgPopupOpen, imgBigSize, imgPopupCaption, itemTemplate, galleryItems } from "./constants.js";
 import { openPopup } from "./modal.js";
 
 //Создадим карточку

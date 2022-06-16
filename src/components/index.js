@@ -25,7 +25,7 @@ import {
   itemLinkInput,
   itemTitleInput,
   validParams,
-} from './utils.js';
+} from './constants.js';
 
 import {
   getInitialCards,
@@ -46,36 +46,18 @@ import { enableValidation } from './validate.js';
 
 export let userId = '';
 
-//Получим карточки
-getUser()
-  .then((user) => {
-    nameUser.textContent = user.name;
-    jobUser.textContent = user.about;
-    urlAvatarUser.src = user.avatar;
-    userId = user._id;
-  })
-  .catch((err) => {
-    console.log(err);
-});
-
-//Получим карточки
-getInitialCards()
-  .then((card) => {
-    renderCards(card);
-  })
-  .catch((err) => {
-  console.log(err);
-  });
-
-
-
-//Открытие окна редактирования профиля
-btnEditProfile.addEventListener('click', function () {
-  nameInput.value = nameUser.textContent.trim();
-  jobInput.value = jobUser.textContent.trim();
-  renderLoading(false, btnEditProfileSubmit, 'Сохранить');
-  openPopup(popupEditProfile);
-});
+//Получим пользователя и карточки
+Promise.all([getUser(), getInitialCards()])
+    .then(([user, card]) => {
+      userId = user._id;
+      nameUser.textContent = user.name;
+      jobUser.textContent = user.about;
+      urlAvatarUser.src = user.avatar;
+      renderCards(card);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 
 //Редактирование профиля
  function handleProfileFormSubmit (evt) {
@@ -97,6 +79,14 @@ btnEditProfile.addEventListener('click', function () {
 };
 
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
+
+//Открытие окна редактирования профиля
+btnEditProfile.addEventListener('click', function () {
+  nameInput.value = nameUser.textContent.trim();
+  jobInput.value = jobUser.textContent.trim();
+  renderLoading(false, btnEditProfileSubmit, 'Сохранить');
+  openPopup(popupEditProfile);
+});
 
 //Открытие окна обновления аватара
 btnUpdateAvatar.addEventListener('click', function () {

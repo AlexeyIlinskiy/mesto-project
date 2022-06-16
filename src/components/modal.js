@@ -1,4 +1,4 @@
-import { popups } from './utils.js';
+import { popups } from './constants.js';
 
 //Работаем с модальными окнами
 
@@ -32,7 +32,4 @@ popups.forEach (function(popup) {
   })
 });
 
-export {
-  openPopup,
-  closePopup
-};
+export { openPopup, closePopup };

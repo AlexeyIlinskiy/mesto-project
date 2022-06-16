@@ -1,10 +1,10 @@
 //Валидация форм
 //Подключим параметры для валидации
-import { validParams } from "./utils";
+import { validParams } from "./constants";
 
 
 // Добавляем класс с ошибкой
-function showInputError (formElem, inputElem, errorMessage, validParams) {
+export function showInputError (formElem, inputElem, errorMessage, validParams) {
   const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
 
   inputElem.classList.add(validParams.inputErrorClass);
@@ -13,14 +13,14 @@ function showInputError (formElem, inputElem, errorMessage, validParams) {
 };
 
 //Удаляем класс с ошибкой
-function hideInputError (formElem, inputElem, validParams) {
+export function hideInputError (formElem, inputElem, validParams) {
   const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
   inputElem.classList.remove(validParams.inputErrorClass);
   errorElem.classList.remove(validParams.errorClass);
   errorElem.textContent = '';
 };
 
-function isValid (formElem, inputElem) {
+export function isValid (formElem, inputElem) {
   if (!inputElem.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
     showInputError(formElem, inputElem, inputElem.validationMessage, validParams);
@@ -30,7 +30,7 @@ function isValid (formElem, inputElem) {
   }
 };
 
-function setEventListeners (formElem, validParams) {
+export function setEventListeners (formElem, validParams) {
   const inputList = Array.from(formElem.querySelectorAll(validParams.inputSelector));
   const buttonElem = formElem.querySelector(validParams.submitButtonSelector);
   toggleButtonState(inputList, buttonElem, validParams);
@@ -43,7 +43,7 @@ function setEventListeners (formElem, validParams) {
   });
 }; 
 
-function enableValidation (validParams) {
+export function enableValidation (validParams) {
   const formList = Array.from(document.querySelectorAll(validParams.formSelector));
 
   formList.forEach((formElem) => {
@@ -55,13 +55,13 @@ function enableValidation (validParams) {
   });
 };
 
-function hasInvalidInput (inputList) {
+export function hasInvalidInput (inputList) {
   return inputList.some((inputElem) => {
     return !inputElem.validity.valid;
   })
 }; 
 
-function toggleButtonState (inputList, buttonElem, validParams) {
+export function toggleButtonState (inputList, buttonElem, validParams) {
   if (hasInvalidInput(inputList)) {
     buttonElem.classList.add(validParams.inactiveButtonClass);
     buttonElem.setAttribute('disabled', '');
@@ -69,14 +69,4 @@ function toggleButtonState (inputList, buttonElem, validParams) {
     buttonElem.classList.remove(validParams.inactiveButtonClass);
     buttonElem.removeAttribute('disabled', '');
   }
-};
-
-export {
-  showInputError,
-  hideInputError,
-  isValid,
-  setEventListeners,
-  enableValidation,
-  hasInvalidInput,
-  toggleButtonState,
 };
