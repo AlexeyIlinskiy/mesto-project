@@ -61,6 +61,7 @@ Promise.all([getUser(), getInitialCards()])
 
 //Редактирование профиля
  function handleProfileFormSubmit (evt) {
+  renderLoading(true, btnEditProfileSubmit, 'Сохранение...');
   evt.preventDefault();
   
   editUser(nameUser.textContent, jobUser.textContent)
@@ -72,7 +73,7 @@ Promise.all([getUser(), getInitialCards()])
       console.log(err);
     })
     .finally(() => {
-      renderLoading(true, btnEditProfileSubmit, 'Сохранение...');
+      renderLoading(false, btnEditProfileSubmit, 'Сохранить');
   })
   
   closePopup(popupEditProfile);
@@ -80,23 +81,9 @@ Promise.all([getUser(), getInitialCards()])
 
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 
-//Открытие окна редактирования профиля
-btnEditProfile.addEventListener('click', function () {
-  nameInput.value = nameUser.textContent.trim();
-  jobInput.value = jobUser.textContent.trim();
-  renderLoading(false, btnEditProfileSubmit, 'Сохранить');
-  openPopup(popupEditProfile);
-});
-
-//Открытие окна обновления аватара
-btnUpdateAvatar.addEventListener('click', function () {
-  urlAvatarInput.value = urlAvatarUser.src.trim();
-  renderLoading(false, btnUpdateAvatarSubmit, 'Сохранить');
-  openPopup(popupUpdateAvatar);
-});
-
 //Обновление аватара
 function handleUpdateAvatar (evt) {
+  renderLoading(true, btnUpdateAvatarSubmit, 'Сохранение...');
   evt.preventDefault();
   
   editAvatar(urlAvatarUser.src)
@@ -107,21 +94,16 @@ function handleUpdateAvatar (evt) {
       console.log(err);
     })
     .finally(() => {
-      renderLoading(true, btnUpdateAvatarSubmit, 'Сохранение...');
+      renderLoading(false, btnUpdateAvatarSubmit, 'Сохранить');
     })
   closePopup(popupUpdateAvatar);
 };
 
 formUpdateAvatar.addEventListener('submit', handleUpdateAvatar);
 
-//Открытие окна добавления карточки
-btnAddItem.addEventListener('click', function () {
-  renderLoading(false, btnImgNewSubmit, 'Создать');
-  openPopup(popupAddItem);
-});
-
 //Дадим пользователю добавить карточку
 formImgNew.addEventListener('submit', function(evt) {
+  renderLoading(true, btnImgNewSubmit, 'Сохранение...');  
   evt.preventDefault();
   
   addNewCard (itemTitleInput.value, itemLinkInput.value)
@@ -137,9 +119,29 @@ formImgNew.addEventListener('submit', function(evt) {
       console.log(err);
     })
     .finally(() => {
-    renderLoading(true, btnImgNewSubmit, 'Сохранение...');    
+      renderLoading(false, btnImgNewSubmit, 'Создать');
     })  
 });
+
+//Открытие попапов
+//1. редактирования профиля
+btnEditProfile.addEventListener('click', function () {
+  nameInput.value = nameUser.textContent.trim();
+  jobInput.value = jobUser.textContent.trim();
+  openPopup(popupEditProfile);
+});
+
+//2. обновления аватара
+btnUpdateAvatar.addEventListener('click', function () {
+  urlAvatarInput.value = urlAvatarUser.src.trim();
+  openPopup(popupUpdateAvatar);
+});
+
+//3. добавления карточки
+btnAddItem.addEventListener('click', function () {
+  openPopup(popupAddItem);
+});
+
 
 //Изменение надписи на кнопке в момент загрузки
 function renderLoading(isLoading, button, defaultText) {
