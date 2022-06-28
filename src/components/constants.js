@@ -9,8 +9,6 @@ export const api = new Api({
   }
 });
 
-
-
 //Соберём все попапы
 export const popups = document.querySelectorAll('.popup');
 
