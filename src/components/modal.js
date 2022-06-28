@@ -1,4 +1,4 @@
-import { popups } from './constants.js';
+import { popups } from './Constants.js';
 
 //Работаем с модальными окнами
 
