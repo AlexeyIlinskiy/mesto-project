@@ -25,7 +25,7 @@ import {
   itemLinkInput,
   itemTitleInput,
   validParams,
-} from './constants.js';
+} from './Constants.js';
 
 import {
   getInitialCards,
@@ -33,13 +33,13 @@ import {
   editUser,
   editAvatar,
   addNewCard
-} from './api.js';
+} from './Api.js';
 
 //Подключим работу с модальными окнами
 import { openPopup, closePopup } from './modal.js';
 
 //Подключим работу с карточками
-import { createCard, renderCards } from './card.js';
+import { createCard, renderCards } from './Card.js';
 
 //Подключим валидацию форм
 import { enableValidation } from './validate.js';

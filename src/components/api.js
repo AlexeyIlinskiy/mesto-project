@@ -1,33 +1,33 @@
-const config = {
-  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11',
-  headers: {
-    authorization: 'f08a7d2d-99b7-4264-bc75-9c8d3d90332f',
-    'Content-Type': 'application/json'
+class Api {
+  constructor( { baseUrl, headers } ) {
+    this._basUrl = baseUrl;
+    this._headers = headers;
   }
-};
 
-function checkResponse (res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Ошибка: ${res.status}`);
-};
-
-//Функция получения информации о пользователе с сервера
-export function getUser() {
+//Метод получения карточек с сервера
+  getInitialCards() {
   return fetch (
-    `${config.baseUrl}/users/me`, {
+    `${this.baseUrl}/cards`, {
+    headers: this.headers
+  })
+    .then (checkResponse)
+};
+
+//Метод получения информации о пользователе с сервера
+  getUser() {
+  return fetch (
+    `${this.baseUrl}/users/me`, {
       method: 'GET',
-      headers: config.headers
+      headers: this.headers
     })
     .then (checkResponse)
 };
 
-//Функция редактирования профиля
-export function editUser(nameUser, jobUser) {
-  return fetch (`${config.baseUrl}/users/me`, {
+//Метод редактирования профиля
+  editUser(nameUser, jobUser) {
+  return fetch (`${this.baseUrl}/users/me`, {
       method: 'PATCH', 
-      headers: config.headers,
+      headers: this.headers,
       body: JSON.stringify ({
         name: nameUser,
         about: jobUser
@@ -36,11 +36,11 @@ export function editUser(nameUser, jobUser) {
     .then (checkResponse)
 };
 
-//Функция редактирования аватара
-export function editAvatar(avatar) {
-  return fetch (`${config.baseUrl}/users/me/avatar`, {
+//Метод редактирования аватара
+  editAvatar(avatar) {
+  return fetch (`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH', 
-      headers: config.headers,
+      headers: this.headers,
       body: JSON.stringify ({
         avatar: avatar
       })
@@ -48,20 +48,11 @@ export function editAvatar(avatar) {
     .then (checkResponse)
 };
 
-//Функция получения карточек с сервера
-export function getInitialCards() {
-  return fetch (
-    `${config.baseUrl}/cards`, {
-    headers: config.headers
-  })
-    .then (checkResponse)
-};
-
 //Функция добавления новой карточки
-export function addNewCard(name, link) {
-  return fetch (`${config.baseUrl}/cards`, {
+  addNewCard(name, link) {
+  return fetch (`${this.baseUrl}/cards`, {
       method: 'POST', 
-      headers: config.headers,
+      headers: this.headers,
       body: JSON.stringify ({
         name: name,
         link: link
@@ -71,26 +62,48 @@ export function addNewCard(name, link) {
 };
 
 //Функция лайков у карточки:
-export function addLikeCard(idCard) { 
-  return fetch (`${config.baseUrl}/cards/likes/${idCard}`, { 
+addLikeCard(idCard) { 
+  return fetch (`${this.baseUrl}/cards/likes/${idCard}`, { 
       method: 'PUT',  
-      headers: config.headers, 
+      headers: this.headers, 
     }) 
     .then (checkResponse)
 };
 
-export function removeLikeCard(idCard) {
-  return fetch (`${config.baseUrl}/cards/likes/${idCard}`, {
+removeLikeCard(idCard) {
+  return fetch (`${this.baseUrl}/cards/likes/${idCard}`, {
       method: 'DELETE', 
-      headers: config.headers,
+      headers: this.headers,
     })
     .then (checkResponse)
 };
 
-export function deleteCard(idCard) {
-  return fetch (`${config.baseUrl}/cards/${idCard}`, {
+deleteCard(idCard) {
+  return fetch (`${this.baseUrl}/cards/${idCard}`, {
       method: 'DELETE', 
-      headers: config.headers,
+      headers: this.headers,
     })
     .then (checkResponse)
   };
+
+_checkResponse (res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  };
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
