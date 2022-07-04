@@ -28,15 +28,6 @@ import {
   validParams,
 } from './constants.js';
 
-import {
-  editUser,
-  editAvatar,
-  addNewCard
-} from './Api.js';
-
-//Подключим работу с модальными окнами
-import { openPopup, closePopup } from './modal.js';
-
 //Подключим валидацию форм
 import { enableValidation } from './FormValidator.js';
 
@@ -135,6 +126,7 @@ const formNewCard = new PopupWithForm(popupAddItem, {
   handleSubmit: (data) => {
     btnImgNewSubmit.textContent = "Сохранение...";
     api.addNewCard(data)
+<<<<<<< Updated upstream
     .then((data) => {
     const newCard = new Card ({ 
       renderer: (data) => {
@@ -152,6 +144,22 @@ const formNewCard = new PopupWithForm(popupAddItem, {
     const newCardElement = newCard.generate(data);
     cardsList.setItem(newCardElement);
     })
+=======
+    .then((data) => {console.log(data)})
+    .then((data) => {
+    const newCard = new Card ({
+      api,
+      data, 
+      userId, 
+      handleCardClick: () => {
+        const popupWithImage = new PopupWithImage(imgPopupOpen, data);
+        popupWithImage.open();
+      },
+      templateSelector: '#item-template'})
+      const newCardElement = newCard.generate(data);
+      cardsList.setItem(newCardElement);
+}, galleryItems)
+>>>>>>> Stashed changes
     .catch((err) => {
     console.log(err)})
     .finally(() => {
@@ -159,6 +167,7 @@ const formNewCard = new PopupWithForm(popupAddItem, {
     formNewCard.close();
     });
   }
+<<<<<<< Updated upstream
 });
 
 btnAddItem.addEventListener('click', () => {
@@ -260,3 +269,10 @@ function renderLoading(isLoading, button, defaultText) {
 
 enableValidation(validParams);
 */
+=======
+})
+
+btnAddItem.addEventListener('click', () => {
+  formNewCard.open();
+});
+>>>>>>> Stashed changes
