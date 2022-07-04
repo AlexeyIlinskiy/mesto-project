@@ -4,6 +4,7 @@ import '../styles/index.css';
 //Подключим переменные
 import {
   galleryItems,
+  imgPopupOpen,
   popupEditProfile,
   popupUpdateAvatar,
   popupAddItem,
@@ -25,11 +26,9 @@ import {
   itemLinkInput,
   itemTitleInput,
   validParams,
-} from './Constants.js';
+} from './constants.js';
 
 import {
-  getInitialCards,
-  getUser,
   editUser,
   editAvatar,
   addNewCard
@@ -38,27 +37,135 @@ import {
 //Подключим работу с модальными окнами
 import { openPopup, closePopup } from './modal.js';
 
-//Подключим работу с карточками
-import { createCard, renderCards } from './Card.js';
-
 //Подключим валидацию форм
-import { enableValidation } from './validate.js';
+import { enableValidation } from './FormValidator.js';
 
-export let userId = '';
+import Api from './Api.js'
+import UserInfo from './UserInfo.js';
+import Card from './Card.js';
+import Section from './Section.js';
+import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
+
+
+//Данные для api
+const api = new Api({
+  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11',
+  headers: {
+    authorization: 'f08a7d2d-99b7-4264-bc75-9c8d3d90332f',
+    'Content-Type': 'application/json'
+  }
+});
+
+let userId = '';
 
 //Получим пользователя и карточки
-Promise.all([getUser(), getInitialCards()])
-    .then(([user, card]) => {
-      userId = user._id;
-      nameUser.textContent = user.name;
-      jobUser.textContent = user.about;
-      urlAvatarUser.src = user.avatar;
-      renderCards(card);
+Promise.all([api.getUser(), api.getInitialCards()])
+  .then(([user, cards]) => {
+    userId = user._id;
+    userInfo.setUserInfo(user);
+    cardsList.renderItems(cards);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+//Получаем экземпляр класса для пользователя
+const userInfo = new UserInfo({ nameUser, jobUser, urlAvatarUser });
+
+//Получаем экземпляр класса для карточек
+const cardsList = new Section ({ 
+  renderer: (data) => {
+    const card = new Card ({
+      api,
+      data, 
+      userId, 
+      handleCardClick: () => {
+        const popupWithImage = new PopupWithImage(imgPopupOpen, data);
+        popupWithImage.open();
+      },
+      templateSelector: '#item-template'})
+      const cardElement = card.generate();
+      cardsList.setItem(cardElement);}
+}, galleryItems)
+
+const formEditUser = new PopupWithForm(popupEditProfile, {
+  handleSubmit: (data) => {
+    btnEditProfileSubmit.textContent = "Сохранение...";
+    api.editUser(data)
+    .then((data) => {
+    userInfo.setUserInfo(data);
     })
     .catch((err) => {
-        console.log(err);
-    })
+    console.log(err)})
+    .finally(() => {
+    btnEditProfileSubmit.textContent = "Сохранить";
+    formEditUser.close();
+    });
+  }
+});
 
+btnEditProfile.addEventListener('click', () => {
+  nameInput.value = nameUser.textContent;
+  jobInput.value = jobUser.textContent;
+  formEditUser.open();
+});
+
+const formEditAvatar = new PopupWithForm(popupUpdateAvatar, {
+  handleSubmit: (data) => {
+    btnUpdateAvatarSubmit.textContent = "Сохранение...";
+    api.editAvatar(data)
+    .then((data) => {
+    userInfo.setUserInfo(data);
+    })
+    .catch((err) => {
+    console.log(err)})
+    .finally(() => {
+    btnUpdateAvatarSubmit.textContent = "Сохранить";
+    formEditAvatar.close();
+    });
+  }
+});
+
+btnUpdateAvatar.addEventListener('click', () => {
+  formEditAvatar.open();
+});
+
+const formNewCard = new PopupWithForm(popupAddItem, {
+  handleSubmit: (data) => {
+    btnImgNewSubmit.textContent = "Сохранение...";
+    api.addNewCard(data)
+    .then((data) => {
+    const newCard = new Card ({ 
+      renderer: (data) => {
+        const card = new Card ({
+          api,
+          data, 
+          userId, 
+          handleCardClick: () => {
+            const popupWithImage = new PopupWithImage(imgPopupOpen, data);
+            popupWithImage.open();
+          },
+          templateSelector: '#item-template'})
+          }
+    }, galleryItems)
+    const newCardElement = newCard.generate(data);
+    cardsList.setItem(newCardElement);
+    })
+    .catch((err) => {
+    console.log(err)})
+    .finally(() => {
+    btnImgNewSubmit.textContent = "Сохранить";
+    formNewCard.close();
+    });
+  }
+});
+
+btnAddItem.addEventListener('click', () => {
+  formNewCard.open();
+});
+
+/*
 //Редактирование профиля
  function handleProfileFormSubmit (evt) {
   renderLoading(true, btnEditProfileSubmit, 'Сохранение...');
@@ -152,3 +259,4 @@ function renderLoading(isLoading, button, defaultText) {
 };
 
 enableValidation(validParams);
+*/
