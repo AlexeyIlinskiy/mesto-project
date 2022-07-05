@@ -46,8 +46,8 @@ export const itemTitleInput = document.querySelector('#name-item-input'); //Вы
 export const btnImgNewSubmit = formImgNew.querySelector('.form__button');
 
 //Объект настроек c классами и селекторами для валидации
-export const validParams = {
-  formSelector: '.form',
+export const config = {
+  form: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__button',
   inactiveButtonClass: 'form__button_disabled',

@@ -25,11 +25,8 @@ import {
   btnImgNewSubmit,
   itemLinkInput,
   itemTitleInput,
-  validParams,
+  config
 } from './constants.js';
-
-//Подключим валидацию форм
-import { enableValidation } from './FormValidator.js';
 
 import Api from './Api.js'
 import UserInfo from './UserInfo.js';
@@ -37,6 +34,7 @@ import Card from './Card.js';
 import Section from './Section.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
+import FormValidator from './FormValidator.js';
 
 
 //Данные для api
@@ -152,3 +150,14 @@ const formNewCard = new PopupWithForm(popupAddItem, {
 btnAddItem.addEventListener('click', () => {
   formNewCard.open();
 });
+
+// функция валидации данных
+function startValidation() {
+  const forms = Array.from(document.querySelectorAll('.form')); // массив форм
+  forms.forEach((form) => {
+      const validator = new FormValidator(config, form);
+      validator.enableValidation();
+  });
+}
+
+startValidation();
