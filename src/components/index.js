@@ -126,25 +126,6 @@ const formNewCard = new PopupWithForm(popupAddItem, {
   handleSubmit: (data) => {
     btnImgNewSubmit.textContent = "Сохранение...";
     api.addNewCard(data)
-<<<<<<< Updated upstream
-    .then((data) => {
-    const newCard = new Card ({ 
-      renderer: (data) => {
-        const card = new Card ({
-          api,
-          data, 
-          userId, 
-          handleCardClick: () => {
-            const popupWithImage = new PopupWithImage(imgPopupOpen, data);
-            popupWithImage.open();
-          },
-          templateSelector: '#item-template'})
-          }
-    }, galleryItems)
-    const newCardElement = newCard.generate(data);
-    cardsList.setItem(newCardElement);
-    })
-=======
     .then((data) => {console.log(data)})
     .then((data) => {
     const newCard = new Card ({
@@ -159,7 +140,6 @@ const formNewCard = new PopupWithForm(popupAddItem, {
       const newCardElement = newCard.generate(data);
       cardsList.setItem(newCardElement);
 }, galleryItems)
->>>>>>> Stashed changes
     .catch((err) => {
     console.log(err)})
     .finally(() => {
@@ -167,112 +147,8 @@ const formNewCard = new PopupWithForm(popupAddItem, {
     formNewCard.close();
     });
   }
-<<<<<<< Updated upstream
-});
-
-btnAddItem.addEventListener('click', () => {
-  formNewCard.open();
-});
-
-/*
-//Редактирование профиля
- function handleProfileFormSubmit (evt) {
-  renderLoading(true, btnEditProfileSubmit, 'Сохранение...');
-  evt.preventDefault();
-  
-  editUser(nameInput.value, jobInput.value)
-    .then(() => {
-      nameUser.textContent = nameInput.value;
-      jobUser.textContent = jobInput.value; 
-      closePopup(popupEditProfile); 
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      renderLoading(false, btnEditProfileSubmit, 'Сохранить');
-  })
-};
-
-formEditProfile.addEventListener('submit', handleProfileFormSubmit);
-
-//Обновление аватара
-function handleUpdateAvatar (evt) {
-  renderLoading(true, btnUpdateAvatarSubmit, 'Сохранение...');
-  evt.preventDefault();
-  
-  editAvatar(urlAvatarInput.value)
-    .then(() => {
-      urlAvatarUser.src = urlAvatarInput.value;
-      closePopup(popupUpdateAvatar); 
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      renderLoading(false, btnUpdateAvatarSubmit, 'Сохранить');
-    })
-};
-
-formUpdateAvatar.addEventListener('submit', handleUpdateAvatar);
-
-//Дадим пользователю добавить карточку
-formImgNew.addEventListener('submit', function(evt) {
-  renderLoading(true, btnImgNewSubmit, 'Сохранение...');  
-  evt.preventDefault();
-  
-  addNewCard (itemTitleInput.value, itemLinkInput.value)
-    .then ((card) => {
-      galleryItems.prepend(createCard(itemLinkInput.value, itemTitleInput.value, card._id, card.owner._id, card.likes));
-      btnImgNewSubmit.classList.add(validParams.inactiveButtonClass);
-      btnImgNewSubmit.setAttribute('disabled', '');
-      formImgNew.reset();
-
-      closePopup(popupAddItem);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      renderLoading(false, btnImgNewSubmit, 'Создать');
-    })  
-});
-
-//Открытие попапов
-//1. редактирования профиля
-btnEditProfile.addEventListener('click', function () {
-  nameInput.value = nameUser.textContent.trim();
-  jobInput.value = jobUser.textContent.trim();
-  openPopup(popupEditProfile);
-});
-
-//2. обновления аватара
-btnUpdateAvatar.addEventListener('click', function () {
-  urlAvatarInput.value = urlAvatarUser.src.trim();
-  openPopup(popupUpdateAvatar);
-});
-
-//3. добавления карточки
-btnAddItem.addEventListener('click', function () {
-  openPopup(popupAddItem);
-});
-
-
-//Изменение надписи на кнопке в момент загрузки
-function renderLoading(isLoading, button, defaultText) {
-  if (isLoading) {
-    button.textContent = 'Сохранение...';
-  } else {
-    button.textContent = defaultText;
-  }
-};
-
-enableValidation(validParams);
-*/
-=======
 })
 
 btnAddItem.addEventListener('click', () => {
   formNewCard.open();
 });
->>>>>>> Stashed changes
