@@ -124,7 +124,7 @@ const formNewCard = new PopupWithForm(popupAddItem, {
   handleSubmit: (data) => {
     btnImgNewSubmit.textContent = "Сохранение...";
     api.addNewCard(data)
-    .then((data) => {console.log(data)})
+    // .then((data) => {console.log(data)})
     .then((data) => {
     const newCard = new Card ({
       api,

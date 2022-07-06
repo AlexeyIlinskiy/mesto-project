@@ -1,9 +1,10 @@
-//класс Кард
+//Создадим и экспортируем класс Card
 export default class Card {
   constructor ({ api, data, userId, handleCardClick, templateSelector }) {
     this._api = api;
-    this._name = data.name;
-    this._link = data.link;
+    this._data = data;
+    // this._name = data.name;
+    // this._link = data.link;
     this._templateSelector = templateSelector;
     this._userId = userId;
     this._cardId = data._id;
@@ -13,7 +14,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
 
   }
-  
+  //Клонируем темплейт карточки
   _getElement() {
     this._card = document
       .querySelector(this._templateSelector)
@@ -22,7 +23,7 @@ export default class Card {
   
     return this._card;
   }
-
+  //Навесим слушатели на кнопки
   _setEventListeners() {
     //лайки
     this._element.querySelector('.item__btn-like').addEventListener ('click', () => {
@@ -37,7 +38,7 @@ export default class Card {
     this._handleCardClick();
   })
 }
-
+  //Поработаем с лайками
   _likeCard () {
     const btnLike = this._element.querySelector('.item__btn-like');
     if (!btnLike.classList.contains('item__btn-like_active')) {
@@ -60,14 +61,14 @@ export default class Card {
         })
     }  
   };
-
+  //Метод удаления карточки
   _deleteCard() {
     this._api.deleteCard(this._cardId)
     .then(() => {
       this._element.remove();
     })
   }
-  
+  //Публичный метод генерации карточки
   generate() {
     this._element = this._getElement();
     this._setEventListeners();
