@@ -1,14 +1,5 @@
 //Здесь разместим объявление переменных
 
-//Данные для api
-export const api = new Api({
-  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-11',
-  headers: {
-    authorization: 'f08a7d2d-99b7-4264-bc75-9c8d3d90332f',
-    'Content-Type': 'application/json'
-  }
-});
-
 //Соберём все попапы
 export const popups = document.querySelectorAll('.popup');
 
@@ -55,8 +46,8 @@ export const itemTitleInput = document.querySelector('#name-item-input'); //Вы
 export const btnImgNewSubmit = formImgNew.querySelector('.form__button');
 
 //Объект настроек c классами и селекторами для валидации
-export const validParams = {
-  formSelector: '.form',
+export const config = {
+  form: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__button',
   inactiveButtonClass: 'form__button_disabled',

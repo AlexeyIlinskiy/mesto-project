@@ -1,72 +1,81 @@
 //Валидация форм
-//Подключим параметры для валидации
-import { validParams } from "./constants";
 
+//Класс валидатора
+export default class FormValidator {
+  constructor (config, form) { 
+    this._formSelector = config.formSelector;
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
+    this._form = form;
+  }
 
-// Добавляем класс с ошибкой
-export function showInputError (formElem, inputElem, errorMessage, validParams) {
-  const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
+// Добавление класса с ошибкой
+_showInputError (form, inputElem, errorMessage) {
+  const errorElem = form.querySelector(`.${inputElem.id}-error`);
 
-  inputElem.classList.add(validParams.inputErrorClass);
+  inputElem.classList.add(this._inputErrorClass);
   errorElem.textContent = errorMessage;
-  errorElem.classList.add(validParams.errorClass);
+  errorElem.classList.add(this._errorClass);
 };
 
-//Удаляем класс с ошибкой
-export function hideInputError (formElem, inputElem, validParams) {
-  const errorElem = formElem.querySelector(`.${inputElem.id}-error`);
-  inputElem.classList.remove(validParams.inputErrorClass);
-  errorElem.classList.remove(validParams.errorClass);
+//Скрытие ошибок (удаление класса с ошибками)
+_hideInputError (form, inputElem) {
+  const errorElem = form.querySelector(`.${inputElem.id}-error`);
+  inputElem.classList.remove(this._inputErrorClass);
+  errorElem.classList.remove(this._errorClass);
   errorElem.textContent = '';
 };
 
-export function isValid (formElem, inputElem) {
+//Метод определения корректности введённых данных
+_isValid (form, inputElem) {
   if (!inputElem.validity.valid) {
     // Если поле не проходит валидацию, покажем ошибку
-    showInputError(formElem, inputElem, inputElem.validationMessage, validParams);
+    this._showInputError(form, inputElem, inputElem.validationMessage);
   } else {
     // Если проходит, скроем
-    hideInputError(formElem, inputElem, validParams);
+    this._hideInputError(form, inputElem);
   }
 };
 
-export function setEventListeners (formElem, validParams) {
-  const inputList = Array.from(formElem.querySelectorAll(validParams.inputSelector));
-  const buttonElem = formElem.querySelector(validParams.submitButtonSelector);
-  toggleButtonState(inputList, buttonElem, validParams);
+//Установка слушателей событий для валидации
+_setEventListeners (form) {
+  const inputList = Array.from(form.querySelectorAll(this._inputSelector));
+  const buttonElem = form.querySelector(this._submitButtonSelector);
+  this._toggleButtonState(inputList, buttonElem);
 
   inputList.forEach((inputElem) => {
     inputElem.addEventListener('input', () => {
-      isValid(formElem, inputElem);
-      toggleButtonState(inputList, buttonElem, validParams);
+      this._isValid(form, inputElem);
+      this._toggleButtonState(inputList, buttonElem);
     });
   });
 }; 
 
-export function enableValidation (validParams) {
-  const formList = Array.from(document.querySelectorAll(validParams.formSelector));
-
-  formList.forEach((formElem) => {
-    formElem.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-
-    setEventListeners(formElem, validParams);
-  });
-};
-
-export function hasInvalidInput (inputList) {
+//Метод проверяющий на валидность поля
+_hasInvalidInput (inputList) {
   return inputList.some((inputElem) => {
     return !inputElem.validity.valid;
   })
-}; 
+};
 
-export function toggleButtonState (inputList, buttonElem, validParams) {
-  if (hasInvalidInput(inputList)) {
-    buttonElem.classList.add(validParams.inactiveButtonClass);
+
+//Работа с кнопкой
+_toggleButtonState (inputList, buttonElem) {
+  if (this._hasInvalidInput(inputList)) {
+    buttonElem.classList.add(this._inactiveButtonClass);
     buttonElem.setAttribute('disabled', '');
   } else {
-    buttonElem.classList.remove(validParams.inactiveButtonClass);
+    buttonElem.classList.remove(this._inactiveButtonClass);
     buttonElem.removeAttribute('disabled', '');
   }
 };
+
+//Метод включения валидации
+enableValidation () {
+  this._setEventListeners(this._form);
+};
+
+}
