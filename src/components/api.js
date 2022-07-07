@@ -1,5 +1,3 @@
-import {itemTitleInput, itemLinkInput} from './constants.js'
-
 export default class Api {
   constructor( { baseUrl, headers } ) {
     this._baseUrl = baseUrl;
@@ -32,7 +30,7 @@ export default class Api {
     .then (this._checkResponse)
 };
 
-//Метод редактирования профиля
+//Редактирование профиля
   editUser(nameUser, jobUser) {
   return fetch (`${this._baseUrl}/users/me`, {
       method: 'PATCH', 
@@ -45,7 +43,7 @@ export default class Api {
     .then (this._checkResponse)
 };
 
-//Метод редактирования аватара
+//Редактирование аватара
   editAvatar(urlAvatarUser) {
   return fetch (`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH', 
@@ -58,20 +56,20 @@ export default class Api {
     .then (this._checkResponse)
 };
 
-//Функция добавления новой карточки
-  addNewCard() {
+//Добавление новой карточки
+  addNewCard(name, link) {
   return fetch (`${this._baseUrl}/cards`, {
       method: 'POST', 
       headers: this._headers,
       body: JSON.stringify ({
-        name: itemTitleInput.value,
-        link: itemLinkInput.value
+        name: name,
+        link: link
       })
     })
     .then (this._checkResponse)
 };
 
-//Функция лайков у карточки:
+//Добавление лайков карточки:
 addLikeCard(cardId) { 
   return fetch (`${this._baseUrl}/cards/likes/${cardId}`, { 
       method: 'PUT',  
@@ -79,7 +77,7 @@ addLikeCard(cardId) {
     }) 
     .then (this._checkResponse)
 };
-
+//Удаление лайков
 removeLikeCard(cardId) {
   return fetch (`${this._baseUrl}/cards/likes/${cardId}`, {
       method: 'DELETE', 
@@ -87,7 +85,7 @@ removeLikeCard(cardId) {
     })
     .then (this._checkResponse)
 };
-
+//Удаление карточки
 deleteCard(cardId) {
   return fetch (`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE', 

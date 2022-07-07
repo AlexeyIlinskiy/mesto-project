@@ -122,10 +122,41 @@ btnUpdateAvatar.addEventListener('click', () => {
   formEditAvatar.open();
 });
 
+//Добавление новой карточки
+// const formNewCard = new PopupWithForm(popupAddItem, {
+//   handleSubmit: (data) => {
+//     btnImgNewSubmit.textContent = "Сохранение...";
+//     api.addNewCard(data)
+//     // .then((data) => {console.log(data)})
+//     .then((data) => {
+//     const newCard = new Card ({
+//       api,
+//       data, 
+//       userId, 
+//       handleCardClick: () => {
+//         const popupWithImage = new PopupWithImage(imgPopupOpen, data);
+//         popupWithImage.open();
+//       },
+//       templateSelector: '#item-template'})
+//       const newCardElement = newCard.generate(data);
+//       cardsList.setItem(newCardElement);
+// }, galleryItems)
+//     .catch((err) => {
+//     console.log(err)})
+//     .finally(() => {
+//     btnImgNewSubmit.textContent = "Сохранить";
+//     formNewCard.close();
+//     });
+//   }
+// })
+
+// btnAddItem.addEventListener('click', () => {
+//   formNewCard.open();
+// });
 const formNewCard = new PopupWithForm(popupAddItem, {
-  handleSubmit: (data) => {
+  handleSubmit: () => {
     btnImgNewSubmit.textContent = "Сохранение...";
-    api.addNewCard(data)
+    api.addNewCard(itemTitleInput.value, itemLinkInput.value)
     // .then((data) => {console.log(data)})
     .then((data) => {
     const newCard = new Card ({
