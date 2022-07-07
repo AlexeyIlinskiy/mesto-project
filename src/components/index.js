@@ -8,20 +8,18 @@ import {
   popupEditProfile,
   popupUpdateAvatar,
   popupAddItem,
+  formImgNew,
   btnEditProfile,
   btnEditProfileSubmit,
   btnUpdateAvatar,
   btnAddItem,
-  formEditProfile,
   nameInput,
   jobInput,
   nameUser,
   jobUser,
-  formUpdateAvatar,
   urlAvatarInput,
   urlAvatarUser,
   btnUpdateAvatarSubmit,
-  formImgNew,
   btnImgNewSubmit,
   itemLinkInput,
   itemTitleInput,
@@ -47,6 +45,17 @@ const api = new Api({
 });
 
 let userId = '';
+
+// функция валидации данных
+function startValidation() {
+  const forms = Array.from(document.querySelectorAll('.form')); // массив форм
+  forms.forEach((form) => {
+      const validator = new FormValidator(config, form);
+      validator.enableValidation();
+  });
+}
+
+startValidation();
 
 //Получим пользователя и карточки
 Promise.all([api.getUser(), api.getInitialCards()])
@@ -157,7 +166,6 @@ const formNewCard = new PopupWithForm(popupAddItem, {
   handleSubmit: () => {
     btnImgNewSubmit.textContent = "Сохранение...";
     api.addNewCard(itemTitleInput.value, itemLinkInput.value)
-    // .then((data) => {console.log(data)})
     .then((data) => {
     const newCard = new Card ({
       api,
@@ -178,19 +186,11 @@ const formNewCard = new PopupWithForm(popupAddItem, {
     formNewCard.close();
     });
   }
+  
 })
 
 btnAddItem.addEventListener('click', () => {
   formNewCard.open();
 });
 
-// функция валидации данных
-function startValidation() {
-  const forms = Array.from(document.querySelectorAll('.form')); // массив форм
-  forms.forEach((form) => {
-      const validator = new FormValidator(config, form);
-      validator.enableValidation();
-  });
-}
 
-startValidation();

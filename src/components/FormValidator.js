@@ -63,7 +63,7 @@ _hasInvalidInput (inputList) {
 
 
 //Работа с кнопкой
-_toggleButtonState (inputList, buttonElem) {
+_toggleButtonState (inputList, buttonElem, ) {
   if (this._hasInvalidInput(inputList)) {
     buttonElem.classList.add(this._inactiveButtonClass);
     buttonElem.setAttribute('disabled', '');
