@@ -78,10 +78,11 @@ const cardsList = new Section ({
       cardsList.setItem(cardElement);}
 }, galleryItems)
 
+//Редактирование профиля
 const formEditUser = new PopupWithForm(popupEditProfile, {
-  handleSubmit: (data) => {
+  handleSubmit: () => {
     btnEditProfileSubmit.textContent = "Сохранение...";
-    api.editUser(data)
+    api.editUser(nameInput.value, jobInput.value)
     .then((data) => {
     userInfo.setUserInfo(data);
     })
@@ -100,10 +101,11 @@ btnEditProfile.addEventListener('click', () => {
   formEditUser.open();
 });
 
+//Редактирование аватара
 const formEditAvatar = new PopupWithForm(popupUpdateAvatar, {
-  handleSubmit: (data) => {
+  handleSubmit: () => {
     btnUpdateAvatarSubmit.textContent = "Сохранение...";
-    api.editAvatar(data)
+    api.editAvatar(urlAvatarInput.value)
     .then((data) => {
     userInfo.setUserInfo(data);
     })

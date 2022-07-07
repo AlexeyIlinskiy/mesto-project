@@ -1,4 +1,4 @@
-import {nameInput, jobInput, urlAvatarInput, itemTitleInput, itemLinkInput} from './constants.js'
+import {itemTitleInput, itemLinkInput} from './constants.js'
 
 export default class Api {
   constructor( { baseUrl, headers } ) {
@@ -33,25 +33,26 @@ export default class Api {
 };
 
 //Метод редактирования профиля
-  editUser() {
+  editUser(nameUser, jobUser) {
   return fetch (`${this._baseUrl}/users/me`, {
       method: 'PATCH', 
       headers: this._headers,
       body: JSON.stringify ({
-        name: nameInput.value,
-        about: jobInput.value
+        name: nameUser,
+        about: jobUser
       })
     })
     .then (this._checkResponse)
 };
 
 //Метод редактирования аватара
-  editAvatar() {
+  editAvatar(urlAvatarUser) {
   return fetch (`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH', 
       headers: this._headers,
       body: JSON.stringify ({
-        avatar: urlAvatarInput.value,
+        // avatar: urlAvatarInput.value,
+        avatar: urlAvatarUser
       })
     })
     .then (this._checkResponse)
