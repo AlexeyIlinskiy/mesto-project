@@ -10,7 +10,6 @@ export default class Card {
     this._cardId = data._id;
     this._ownerId = data.owner._id;
     this._cardLikes = data.likes;
-
     this._handleCardClick = handleCardClick;
 
   }
@@ -101,18 +100,3 @@ export default class Card {
     return this._element;
   }
 }
-
-/*
-
-//Открытие картинки в полный размер
-  itemElementImg.addEventListener('click',  function () {
-    imgBigSize.src = link;
-    imgBigSize.alt = name;
-    imgPopupCaption.textContent = name;
-    openPopup(imgPopupOpen);  
-  });
-
-  return itemElement;
-};
-
-*/
