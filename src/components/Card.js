@@ -38,8 +38,7 @@ export default class Card {
  }
   //Поработаем с лайками
   _likeCard () {
-    const btnLike = this._element.querySelector('.item__btn-like');
-    if (!btnLike.classList.contains('item__btn-like_active')) {
+    if (!this._btnLike.classList.contains('item__btn-like_active')) {
       this._api.addLikeCard(this._cardId)
       .then((data) => {
         this._likeCount.textContent = data.likes.length;
@@ -66,18 +65,20 @@ export default class Card {
     .then(() => {
       this._element.remove();
     })
+    .catch((err) => {
+      console.log(err);
+    })
   }
   
   //Публичный метод генерации карточки
   generate() {
     this._element = this._getElement();
-    this._setEventListeners();
   
     this._image = this._element.querySelector('.item__img'); //Картинка
     this._title = this._element.querySelector('.item__title'); //Заголовок
-     this._btnLike = this._element.querySelector('.item__btn-like'); //Кнопка лайка
+    this._btnLike = this._element.querySelector('.item__btn-like'); //Кнопка лайка
     this._likeCount = this._element.querySelector('.item__like-count'); //Кол-во лайков
-     this._deleteBtn = this._element.querySelector('.item__btn-delete'); // Корзина
+    this._deleteBtn = this._element.querySelector('.item__btn-delete'); // Корзина
   
     this._image.src = this._link;
     this._title.textContent = this._name;
@@ -94,6 +95,8 @@ export default class Card {
   if (this._ownerId === this._userId ) {
     this._deleteBtn.style.display = 'block';
   }
+  
+  this._setEventListeners();
     
     return this._element;
   }
