@@ -104,8 +104,9 @@ const formEditUser = new PopupWithForm(popupEditProfile, {
 });
  
 btnEditProfile.addEventListener('click', () => {
-  nameInput.value = nameUser.textContent;
-  jobInput.value = jobUser.textContent;
+  const {about, name} = userInfo.getUserInfo();
+  nameInput.value = name;
+  jobInput.value = about;
   formEditUser.open();
 });
  
