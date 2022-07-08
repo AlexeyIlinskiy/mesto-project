@@ -7,7 +7,8 @@ export default class Popup {
    //Открытие попапа
   open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keydown', this._closePopupEsc);
+    this.setEventListeners(); //убрать в index.js
+    // document.addEventListener('keydown', this._closePopupEsc);
   }
 
    //Функция закрытия всех попапов и удаление обработчика кнопки Esc
@@ -25,11 +26,14 @@ export default class Popup {
   
    //Слушатели событий (Закроем попапы по крестику и по клику)
   setEventListeners() {
-    this._popup.addEventListener('mousedown', (evt) => {
+    this._popup.addEventListener('click', (evt) => {
       if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__btn-close')) {
         this.close();
       }
     });
-    // document.addEventListener('keydown', this._closePopupEsc);
+    document.addEventListener('keydown', this._closePopupEsc);
   }
 }
+
+
+//setEventListeners - вызвать в index.js
