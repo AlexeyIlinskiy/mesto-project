@@ -23,7 +23,7 @@ import {
   itemLinkInput,
   itemTitleInput,
   config
-} from './constants.js';
+} from '../utils/constants.js';
  
 import Api from './Api.js'
 import UserInfo from './UserInfo.js';
