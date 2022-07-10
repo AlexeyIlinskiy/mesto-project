@@ -79,6 +79,7 @@ const cardsList = new Section ({
       handleCardClick: () => {
         const popupWithImage = new PopupWithImage(imgPopupOpen, data);
         popupWithImage.open();
+        popupWithImage.setEventListeners();
       },
       templateSelector: '#item-template'})
       const cardElement = card.generate();
