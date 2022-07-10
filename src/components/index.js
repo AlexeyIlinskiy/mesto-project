@@ -102,7 +102,8 @@ const formEditUser = new PopupWithForm(popupEditProfile, {
     });
   }
 });
- 
+
+formEditUser.setEventListeners(); 
 btnEditProfile.addEventListener('click', () => {
   const {about, name} = userInfo.getUserInfo();
   nameInput.value = name;
@@ -126,7 +127,8 @@ const formEditAvatar = new PopupWithForm(popupUpdateAvatar, {
     });
   }
 });
- 
+
+formEditAvatar.setEventListeners();
 btnUpdateAvatar.addEventListener('click', () => {
   formEditAvatar.open();
 });
@@ -157,7 +159,8 @@ const formNewCard = new PopupWithForm(popupAddItem, {
     });
   }
 })
- 
+
+formNewCard.setEventListeners();
 btnAddItem.addEventListener('click', () => {
   formNewCard.open();
 });

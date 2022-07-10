@@ -7,7 +7,6 @@ export default class Popup {
    //Открытие попапа
   open() {
     this._popup.classList.add('popup_opened');
-    this.setEventListeners(); //убрать в index.js
     document.addEventListener('keydown', this._closePopupEsc);
   }
 
@@ -33,6 +32,3 @@ export default class Popup {
     });
   }
 }
-
-
-//setEventListeners - вызвать в index.js
