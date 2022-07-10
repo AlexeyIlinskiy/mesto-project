@@ -18,6 +18,11 @@ export const imgPopupCaption = document.querySelector('.img-popup__caption');
 export const popupEditProfile = document.querySelector('#popup-edit-profile');
 export const popupAddItem = document.querySelector('#popup-add-item');
 export const popupUpdateAvatar = document.querySelector('#popup-update-avatar');
+
+//Формы
+export const formEditProfile = document.querySelector('#form-edit-profile');
+export const formUpdateAvatar = document.querySelector('#form-update-avatar');
+export const formImgNew = document.querySelector('#form-new-item');
  
 //Кнопки
 export const btnEditProfile = document.querySelector('.profile__edit-button');
@@ -25,7 +30,6 @@ export const btnAddItem = document.querySelector('.profile__add-button');
 export const btnUpdateAvatar = document.querySelector('.profile__avatar-update-button');
  
 //Редактирование профиля
-export const formEditProfile = document.querySelector('#form-edit-profile');
 export const nameInput = document.querySelector('#name-profile-input');
 export const jobInput = document.querySelector('#about-profile-input');
 export const nameUser = document.querySelector('.profile__name');
@@ -34,13 +38,11 @@ export const btnEditProfileSubmit = formEditProfile.querySelector('#form-edit-pr
  
  
 //Обновление аватара
-export const formUpdateAvatar = document.querySelector('#form-update-avatar');
 export const urlAvatarInput = document.querySelector('#url-avatar-input');
 export const urlAvatarUser = document.querySelector('.profile__avatar');
 export const btnUpdateAvatarSubmit = formUpdateAvatar.querySelector('#form-update-avatar-btn-submit');
  
 //Добавление карточки пользователем
-export const formImgNew = document.querySelector('#form-new-item');
 export const itemLinkInput = document.querySelector('#url-item-input'); //Выберем поле ввода линка на картинку
 export const itemTitleInput = document.querySelector('#name-item-input'); //Выберем поле ввода названия картинки
 export const btnImgNewSubmit = formImgNew.querySelector('.form__button');

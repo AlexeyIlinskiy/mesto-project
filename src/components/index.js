@@ -8,8 +8,10 @@ import {
   popupEditProfile,
   popupUpdateAvatar,
   popupAddItem,
+  formEditProfile,
+  formUpdateAvatar,
+  formImgNew,
   btnEditProfile,
-  btnEditProfileSubmit,
   btnUpdateAvatar,
   btnAddItem,
   nameInput,
@@ -18,8 +20,6 @@ import {
   jobUser,
   urlAvatarInput,
   urlAvatarUser,
-  btnUpdateAvatarSubmit,
-  btnImgNewSubmit,
   itemLinkInput,
   itemTitleInput,
   config
@@ -43,17 +43,16 @@ const api = new Api({
 });
  
 let userId = '';
- 
-// функция валидации данных
-function startValidation() {
-  const forms = Array.from(document.querySelectorAll('.form')); // массив форм
-  forms.forEach((form) => {
-    const validator = new FormValidator(config, form);
-    validator.enableValidation();
-  });
-}
- 
-startValidation();
+
+//Запустим валидацию форм
+const editUserValidate = new FormValidator (config, formEditProfile);
+const editAvatarValidate = new FormValidator(config, formUpdateAvatar);
+const addNewCardValidate = new FormValidator(config, formImgNew);
+
+editUserValidate.enableValidation();
+editAvatarValidate.enableValidation();
+addNewCardValidate.enableValidation();
+
  
 //Получим пользователя и карточки
 Promise.all([api.getUser(), api.getInitialCards()])
@@ -90,7 +89,7 @@ const cardsList = new Section ({
 //Редактирование профиля
 const formEditUser = new PopupWithForm(popupEditProfile, {
   handleSubmit: () => {
-    btnEditProfileSubmit.textContent = "Сохранение...";
+    formEditUser.renderLoading(true);
     api.editUser(nameInput.value, jobInput.value)
     .then((data) => {
     userInfo.setUserInfo(data);
@@ -98,24 +97,25 @@ const formEditUser = new PopupWithForm(popupEditProfile, {
     .catch((err) => {
       console.log(err)})
     .finally(() => {
-      btnEditProfileSubmit.textContent = "Сохранить";
+      formEditUser.renderLoading(false);
       formEditUser.close();
     });
   }
 });
-
 formEditUser.setEventListeners(); 
+
 btnEditProfile.addEventListener('click', () => {
   const {about, name} = userInfo.getUserInfo();
   nameInput.value = name;
   jobInput.value = about;
+  editUserValidate.resetValidation();
   formEditUser.open();
 });
  
 //Редактирование аватара
 const formEditAvatar = new PopupWithForm(popupUpdateAvatar, {
   handleSubmit: () => {
-    btnUpdateAvatarSubmit.textContent = "Сохранение...";
+    formEditAvatar.renderLoading(true);
     api.editAvatar(urlAvatarInput.value)
     .then((data) => {
     userInfo.setUserInfo(data);
@@ -123,21 +123,22 @@ const formEditAvatar = new PopupWithForm(popupUpdateAvatar, {
     .catch((err) => {
       console.log(err)})
     .finally(() => {
-      btnUpdateAvatarSubmit.textContent = "Сохранить";
+      formEditAvatar.renderLoading(false);
       formEditAvatar.close();
     });
   }
 });
-
 formEditAvatar.setEventListeners();
+
 btnUpdateAvatar.addEventListener('click', () => {
+  editAvatarValidate.resetValidation();
   formEditAvatar.open();
 });
  
 //Добавление новой карточки
 const formNewCard = new PopupWithForm(popupAddItem, {
   handleSubmit: () => {
-    btnImgNewSubmit.textContent = "Сохранение...";
+    formNewCard.renderLoading(true);
     api.addNewCard(itemTitleInput.value, itemLinkInput.value)
     .then((data) => {
       const newCard = new Card ({
@@ -155,13 +156,15 @@ const formNewCard = new PopupWithForm(popupAddItem, {
     .catch((err) => {
       console.log(err)})
     .finally(() => {
-      btnImgNewSubmit.textContent = "Сохранить";
+      formNewCard.renderLoading(false);
       formNewCard.close();
     });
   }
 })
-
 formNewCard.setEventListeners();
+
+
 btnAddItem.addEventListener('click', () => {
+  addNewCardValidate.resetValidation();
   formNewCard.open();
 });
