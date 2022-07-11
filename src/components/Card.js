@@ -33,7 +33,7 @@ export default class Card {
     })
     //попап картинки
     this._element.querySelector('.item__img').addEventListener ('click', () => {
-    this._handleCardClick();
+    this._handleCardClick(this._data);
   })
  }
   //Поработаем с лайками
@@ -92,11 +92,11 @@ export default class Card {
     }
   
   //Добавляем кнопку удалить на карточку
-  if (this._ownerId === this._userId ) {
-    this._deleteBtn.style.display = 'block';
-  }
+    if (this._ownerId === this._userId ) {
+      this._deleteBtn.style.display = 'block';
+    }
   
-  this._setEventListeners();
+    this._setEventListeners();
     
     return this._element;
   }

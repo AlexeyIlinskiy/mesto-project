@@ -22,10 +22,10 @@ export default class PopupWithForm extends Popup {
  renderLoading(isLoading) {
   if (isLoading) {
     this._submitButton.textContent = 'Сохранение...';
-    this._submitButton.setAttribute("disabled", "disabled");
+    //this._submitButton.setAttribute("disabled", "disabled");
   } else {
     this._submitButton.textContent = 'Сохранить';
-    this._submitButton.removeAttribute("disabled");
+    //this._submitButton.removeAttribute("disabled");
   }
 }
  
@@ -39,8 +39,6 @@ export default class PopupWithForm extends Popup {
  
  close() {
    this._form.reset();
-  //  this._submitButton.classList.add('form__button_disabled'); Навесить в метод открытия попапов
-  //  this._submitButton.setAttribute('disabled', '');
    super.close();
  }
 }

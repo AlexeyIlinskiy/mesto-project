@@ -1,6 +1,7 @@
 .item__img {
   width: 282px;
   height: 282px;
+  object-fit: cover;
   margin: 0;
   cursor: pointer;
 }
