@@ -14,14 +14,9 @@ import {
   btnEditProfile,
   btnUpdateAvatar,
   btnAddItem,
-  nameInput,
-  jobInput,
   nameUser,
   jobUser,
-  urlAvatarInput,
   urlAvatarUser,
-  itemLinkInput,
-  itemTitleInput,
   config
 } from '../utils/constants.js';
  
@@ -112,11 +107,10 @@ const formEditUser = new PopupWithForm(popupEditProfile, {
 formEditUser.setEventListeners(); 
 
 btnEditProfile.addEventListener('click', () => {
-  const {about, name} = userInfo.getUserInfo();
-  nameInput.value = name;
-  jobInput.value = about;
-  editUserValidate.resetValidation();
   formEditUser.open();
+  formEditUser.setInputValues(userInfo.getUserInfo());
+  editUserValidate.resetValidation();
+  
 });
  
 //Редактирование аватара
@@ -158,7 +152,6 @@ const formNewCard = new PopupWithForm(popupAddItem, {
   }
 })
 formNewCard.setEventListeners();
-
 
 btnAddItem.addEventListener('click', () => {
   addNewCardValidate.resetValidation();

@@ -7,13 +7,11 @@ export default class UserInfo {
   }
   
   getUserInfo() {
-    const userInfo = {
+     return {
       name: this._nameUser.textContent,
       about: this._jobUser.textContent,
       avatar: this._urlAvatarUser.src
     }
-  
-    return userInfo;
   }
   
   setUserInfo(data) {

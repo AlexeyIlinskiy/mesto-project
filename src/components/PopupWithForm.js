@@ -22,10 +22,8 @@ export default class PopupWithForm extends Popup {
  renderLoading(isLoading) {
   if (isLoading) {
     this._submitButton.textContent = 'Сохранение...';
-    //this._submitButton.setAttribute("disabled", "disabled");
   } else {
     this._submitButton.textContent = 'Сохранить';
-    //this._submitButton.removeAttribute("disabled");
   }
 }
  
@@ -36,6 +34,13 @@ export default class PopupWithForm extends Popup {
      this._handleSubmit(this._getInputValues());
    })
  }
+
+ //Выбираем все инпуты и добавляем в объект значения из разметки(профиля)
+ setInputValues(getData) {
+  this._inputs.forEach((input) => {
+      input.value = getData[input.name];
+  })
+}
  
  close() {
    this._form.reset();
