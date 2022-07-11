@@ -67,38 +67,45 @@ Promise.all([api.getUser(), api.getInitialCards()])
  
 //Получаем экземпляр класса для пользователя
 const userInfo = new UserInfo({ nameUser, jobUser, urlAvatarUser });
+
+//Получаем экземпляр класса для попапа с картинкой
+const popupWithImage = new PopupWithImage(imgPopupOpen);
+popupWithImage.setEventListeners();
  
 //Получаем экземпляр класса для карточек
-const cardsList = new Section ({
-  renderer: (data) => {
-    const card = new Card ({
-      api,
-      data,
-      userId,
-      handleCardClick: () => {
-        const popupWithImage = new PopupWithImage(imgPopupOpen, data);
-        popupWithImage.open();
-        popupWithImage.setEventListeners();
-      },
-      templateSelector: '#item-template'})
-      const cardElement = card.generate();
-      cardsList.setItem(cardElement);
+const createCard = (data) => {
+  const card = new Card ({
+    api,
+    data: data,
+    userId,
+    handleCardClick: (data) => {
+      popupWithImage.open(data);
+    },
+    templateSelector: '#item-template'})
+
+    const cardElement = card.generate();
+    return cardElement;
   }
-}, galleryItems)
+
+const cardsList = new Section({
+  renderer: (data) => {
+    cardsList.setItem(createCard(data));
+  },
+}, galleryItems);
  
 //Редактирование профиля
 const formEditUser = new PopupWithForm(popupEditProfile, {
-  handleSubmit: () => {
+  handleSubmit: (data) => {
     formEditUser.renderLoading(true);
-    api.editUser(nameInput.value, jobInput.value)
+    api.editUser(data)
     .then((data) => {
     userInfo.setUserInfo(data);
+    formEditUser.close();
     })
     .catch((err) => {
       console.log(err)})
     .finally(() => {
       formEditUser.renderLoading(false);
-      formEditUser.close();
     });
   }
 });
@@ -114,17 +121,17 @@ btnEditProfile.addEventListener('click', () => {
  
 //Редактирование аватара
 const formEditAvatar = new PopupWithForm(popupUpdateAvatar, {
-  handleSubmit: () => {
+  handleSubmit: (data) => {
     formEditAvatar.renderLoading(true);
-    api.editAvatar(urlAvatarInput.value)
+    api.editAvatar(data)
     .then((data) => {
     userInfo.setUserInfo(data);
+    formEditAvatar.close();
     })
     .catch((err) => {
       console.log(err)})
     .finally(() => {
       formEditAvatar.renderLoading(false);
-      formEditAvatar.close();
     });
   }
 });
@@ -137,27 +144,16 @@ btnUpdateAvatar.addEventListener('click', () => {
  
 //Добавление новой карточки
 const formNewCard = new PopupWithForm(popupAddItem, {
-  handleSubmit: () => {
+  handleSubmit: (data) => {
     formNewCard.renderLoading(true);
-    api.addNewCard(itemTitleInput.value, itemLinkInput.value)
+    api.addNewCard(data)
     .then((data) => {
-      const newCard = new Card ({
-      api,
-      data,
-      userId,
-      handleCardClick: () => {
-        const popupWithImage = new PopupWithImage(imgPopupOpen, data);
-        popupWithImage.open();
-      },
-      templateSelector: '#item-template'})
-      const newCardElement = newCard.generate(data);
-      cardsList.setItem(newCardElement);
-    }, galleryItems)
+      cardsList.setItem(createCard(data));
+      formNewCard.close()})
     .catch((err) => {
       console.log(err)})
     .finally(() => {
       formNewCard.renderLoading(false);
-      formNewCard.close();
     });
   }
 })
